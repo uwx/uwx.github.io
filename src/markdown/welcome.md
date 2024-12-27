@@ -75,7 +75,7 @@ An experimental plugin to sync Obsidian vaults in encrypted form to an [AT Proto
 
 [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus): Helped ship and maintain version 4 of the library. Provided support for a few years after leaving my maintainer role, and helped new maintainers with onboarding.
 
-[infinicraft](https://github.com/uwx/infinicraft): Helped add many new features and few performance improvements during early development.
+[infinicraft](https://github.com/Infinicraft-Mod/infinicraft): Helped add many new features and few performance improvements during early development.
 
 [Silk.NET](https://github.com/dotnet/Silk.NET): Helped bikeshed the new Silk.Maths implementation.
 
