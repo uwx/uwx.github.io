@@ -3,7 +3,8 @@
 I'm a backend C# and Java developer and frontend JavaScript / TypeScript + Solid,
 Svelte, Vue, and Angular.
 
-I also like reverse engineering, network security and optimizing compilers, and I also speak Python, Lua, and Ruby.
+I also like reverse engineering, network security and optimizing compilers, and I
+also speak Python, Lua, Ruby, Vala, and a little Rust.
 
 ### Here are some of my things:
 
