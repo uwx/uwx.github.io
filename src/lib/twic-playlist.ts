@@ -1,12 +1,30 @@
 /*
 https://thisweekinchiptune.libsyn.com/rss
 
+var d = new DOMParser().parseFromString(document.body.textContent, 'text/xml')
+
 var parseDuration = e => {
-    const match = e.match(/(?:(\d+):)?(?:(\d+):)?(\d+)/);
-    const h = parseInt(match[1] ?? 0, 10);
-    const m = parseInt(match[2] ?? 0, 10);
-    const s = parseInt(match[3], 10);
-    return s + (m * 60) + (h * 60 * 60);
+    const match = e.trim().split(':');
+    let h, m, s;
+    if (match.length == 2) {
+        h = '0';
+        m = match[0];
+        s = match[1];
+    } else if (match.length == 3) {
+        h = match[0];
+        m = match[1];
+        s = match[2];
+    } else {
+        h = '0';
+        m = '0';
+        s = match[0];
+    }
+
+    h = parseInt(h, 10);
+    m = parseInt(m, 10);
+    s = parseInt(s, 10);
+
+    return (h * 60 * 60) + (m * 60) + s;
 };
 
 copy(JSON.stringify([...d.querySelectorAll('item')]
@@ -39,9 +57,19 @@ export const TWiCPlaylist = [
         duration: 4395,
     },
     {
+        title: "The Finale is Coming (Update from Cutman)",
+        url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_Finale_is_Coming_Soon_Update_from_Cutman.mp3?dest-id=232497",
+        duration: 503,
+    },
+    {
         title: "TWiC 196: FUTURE INTERNET DANCE MUSIC",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_196__Future_Internet_Dance_Music_chapterized.mp3?dest-id=232497",
         duration: 5357,
+    },
+    {
+        title: "The Final Episodes",
+        url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_Final_Episodes_Announcement.mp3?dest-id=232497",
+        duration: 141,
     },
     {
         title: "TWiC 195: Chiptunes = WIN Volume 6",
@@ -51,12 +79,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 194: RoboRob Guest Mix - Outer Space EDM / VGM",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_194__RoboRob_Guest_Mix.mp3?dest-id=232497",
-        duration: 151233,
+        duration: 2553,
     },
     {
         title: "TWiC 193: Summersape Game-Time (Steven Silo Guest Mix)",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_193__Summerscape_Game-Time_Steven_Silo_Guest_Mix.mp3?dest-id=232497",
-        duration: 176441,
+        duration: 2981,
     },
     {
         title: "TWiC 192: Chip for Change & Battle of the Bits",
@@ -71,12 +99,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 190: 101% Video Game Trance (bLiNd Guest Mix)",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_190__101_Video_Game_Trance_bLiNd_Guest_Mix.mp3?dest-id=232497",
-        duration: 183649,
+        duration: 3109,
     },
     {
         title: "TWiC 189: Breath of the Wild (Tokyo Elvis Guest Mix) [Chapterized]",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_189__Breath_of_the_Wild_Tokyo_Elvis_Guest_Mix_Chapters.mp3?dest-id=232497",
-        duration: 115258,
+        duration: 1978,
     },
     {
         title: "TWiC 188: Happy Hardcore Special (J-NERATION)",
@@ -86,7 +114,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 187: Amiga Cyberpunk, GameChops, and Floor Baba",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_187_Amiga_Cyberpunk_GameChops_and_Floor_Baba.mp3?dest-id=232497",
-        duration: 208805,
+        duration: 3485,
     },
     {
         title: "TWiC 186: Chiptune Heavy Metal",
@@ -121,12 +149,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 180: Future Bass & Future Funk",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_180_Future_Bass__Future_Funk.mp3?dest-id=232497",
-        duration: 208822,
+        duration: 3502,
     },
     {
         title: "TWiC 179: Data Airlines - Synthwave, Progressive, and Deep Chiptune",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_179_Data_Airlines_-_Synthwave_Progressive_and_Deep_Chiptune.mp3?dest-id=232497",
-        duration: 198053,
+        duration: 3353,
     },
     {
         title: "TWiC 178: Synthwave & 80s Horror Remixes",
@@ -136,7 +164,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 177: Necrodancer & Chiptune Dance Music",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_177__Necrodancer_Chiptune_Dance_Music.mp3?dest-id=232497",
-        duration: 205258,
+        duration: 3478,
     },
     {
         title: "TWiC 176: SOUNDSHOCK! FM Funk from Ubiktune",
@@ -146,7 +174,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 175: This is JōZu (Dj CUTMAN Live @ MAGFest 2017)",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/This_is_JoZu_Dj_CUTMAN_Live__MAGFest_2017.mp3?dest-id=232497",
-        duration: 144023,
+        duration: 2423,
     },
     {
         title: "TWiC 174: Chiptune Holiday Christmas",
@@ -154,14 +182,14 @@ export const TWiCPlaylist = [
         duration: 4022,
     },
     {
-        title: "TWiC 73: Chill Trap, Synthwave, and New Singles",
+        title: "TWiC 173: Chill Trap, Synthwave, and New Singles",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC173__Chill_Trap_Synthwave_and_New_Singles.mp3?dest-id=232497",
-        duration: 187250,
+        duration: 3170,
     },
     {
         title: "TWiC 172: Chill Synthwave, Deep Chip, and Earthbound Jazz",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_172__Chill_Synthwave_Deep_Chip_and_Earthbound_Jazz.mp3?dest-id=232497",
-        duration: 208810,
+        duration: 3490,
     },
     {
         title: "TWiC 171: Blast From The Past",
@@ -176,72 +204,72 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 169: Vocal Chiptune and Dance Music",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_169__Vocal_Chiptunes_and_Dance_Music.mp3?dest-id=232497",
-        duration: 205259,
+        duration: 3479,
     },
     {
         title: "TWiC 168: Feel Better Mix",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_168_Feel_Better_Mix.mp3?dest-id=232497",
-        duration: 212427,
+        duration: 3567,
     },
     {
         title: "TWiC 167: Novemberween Synthwave Horror Soundtrack",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_167__Novemberween_Horror_Synthwave_Soundtrack.mp3?dest-id=232497",
-        duration: 208811,
+        duration: 3491,
     },
     {
         title: "TWiC 166: Electric Night-Time",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_166_Electric_Night-Time.mp3?dest-id=232497",
-        duration: 205210,
+        duration: 3430,
     },
     {
         title: "TWiC 165: NES Chiptune, Gameboy, SNES and Synthwave",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_165__NES_Chiptune_Gameboy_SNES_and_Synthwave.mp3?dest-id=232497",
-        duration: 198025,
+        duration: 3325,
     },
     {
         title: "TWiC 164: Indie Game Music Mix",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_164__Indie_Game_Music_Mix.mp3?dest-id=232497",
-        duration: 212454,
+        duration: 3594,
     },
     {
         title: "TWiC 163: Future Bass to Death Metal",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_163__Future_Bass_to_Death_Metal.mp3?dest-id=232497",
-        duration: 190844,
+        duration: 3224,
     },
     {
         title: "TWiC 162: Upbeat Chiptune Mix (Decktonic, Toriena, Aethernaut, Nanode)",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC162_Upbeat_Chiptune_Mix.mp3?dest-id=232497",
-        duration: 183633,
+        duration: 3093,
     },
     {
         title: "TWiC 161: GameChops Video Game Remix Roundup",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_161__GameChops_Video_Game_Remix_Roundup.mp3?dest-id=232497",
-        duration: 212435,
+        duration: 3575,
     },
     {
         title: "TWiC 160: Summer Solstice (Deskpop, Joshua Morse, An0va)",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_160_Summer_Solstice_Deskpop_Joshua_Morse_An0va.mp3?dest-id=232497",
-        duration: 194437,
+        duration: 3277,
     },
     {
         title: "TWiC 159: Chiptune Dance Mix (Forest Label, Singles)",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_159__Chiptune_Dance_Mix_Forest_Label_Singles.mp3?dest-id=232497",
-        duration: 205221,
+        duration: 3441,
     },
     {
         title: "TWiC 158: Chill End of Summer Mix",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_158__End_of_Summer_Chill_Mix.mp3?dest-id=232497",
-        duration: 208853,
+        duration: 3533,
     },
     {
         title: "TWiC 157: Meganeko, Tri Angles, Cheap Shot, Little Sound Assembly",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC157__Meganeko_Tri_Angles_Cheap_Shot_Little_Sound_Assembly.mp3?dest-id=232497",
-        duration: 198056,
+        duration: 3356,
     },
     {
         title: "TWiC 156: Upbeat and Chill Out - Shirobon, Electric Children, Malmen",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_156__Upbeat_and_Chill_Out.mp3?dest-id=232497",
-        duration: 172821,
+        duration: 2901,
     },
     {
         title: "TWiC 155: Chiptunes = WIN 5",
@@ -251,12 +279,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 154: Funky, Feel Good, Soulful Chiptune",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_154__Funky_Feel_Good_Soulful_Chiptune.mp3?dest-id=232497",
-        duration: 187230,
+        duration: 3150,
     },
     {
         title: "TWiC 153: Chiptune Rock, Indie, and Lo-Fi Bands",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_153__Chiptune_Rock_Indie_and_Lo-Fi_Bands.mp3?dest-id=232497",
-        duration: 201648,
+        duration: 3408,
     },
     {
         title: "TWiC 152: Dj CUTMAN Summer 2016 Tour Collection",
@@ -266,7 +294,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 151: 2ToneDisco Guest Mix",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_151__2ToneDisco_Guest_Mix.mp3?dest-id=232497",
-        duration: 165658,
+        duration: 2818,
     },
     {
         title: "TWiC 150: Future Funk Special",
@@ -281,7 +309,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 148: NES and Gameboy Chiptunes",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_148__NES_and_Gameboy_Chiptunes.mp3?dest-id=232497",
-        duration: 205236,
+        duration: 3456,
     },
     {
         title: "TWiC 147: Synthwave in Space",
@@ -291,7 +319,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 146: Demoscene Time Machine, Robotprins, CheapBeats",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_146__Demoscene_Time_Machine_Robotprins_CheapBeats.mp3?dest-id=232497",
-        duration: 198022,
+        duration: 3322,
     },
     {
         title: "TWiC 145: J-NERATION, Tiasu, Balloonbear, Zan",
@@ -301,12 +329,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 144: Anamanaguchi's Capsule Silence XXIV",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_144_Anamanaguchis_Capsule_Silence_XXIV.mp3?dest-id=232497",
-        duration: 212429,
+        duration: 3569,
     },
     {
         title: "TWiC 143: Arcade High, Musho, Maxo, Casval/Damocles",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_143__Arcade_High_Musho_Maxo_CasvalDamocles.mp3?dest-id=232497",
-        duration: 201612,
+        duration: 3372,
     },
     {
         title: "TWiC 142: Fighter X, Je Mappelle, Skybox, Tiasu, RoboRob",
@@ -321,12 +349,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 140: Mykah, Danimal Cannon, Galaxy Wolf, 456",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_140__Mykah_Danimal_Cannon_Galaxy_Wolf_456.mp3?dest-id=232497",
-        duration: 212459,
+        duration: 3599,
     },
     {
         title: "TWiC 139: Chill Beats, Deep House, and Analog Jams",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_139__Chill_Beats_Deep_House_and_Analog_Jams.mp3?dest-id=232497",
-        duration: 201608,
+        duration: 3368,
     },
     {
         title: "TWiC 138: Rakohus, Submoon Records, DJ Super Sonic",
@@ -341,7 +369,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 136: Shirobon, Nanode, Kola Kid, DJ Super Sonic",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_136__Shirobon_Nanode_Kola_Kid_DJ_Super_Sonic.mp3?dest-id=232497",
-        duration: 201632,
+        duration: 3392,
     },
     {
         title: "TWiC 135: Undertale, Dance Music, and Heavy Metal",
@@ -351,7 +379,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 134: Groovy Tunes and SNES Vibes",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_134__Groovy_Tunes_and_SNES_Vibes.mp3?dest-id=232497",
-        duration: 201641,
+        duration: 3401,
     },
     {
         title: "TWiC 133: Freq Fest, CheapBeats, Coda",
@@ -371,7 +399,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 130: Post-Guch Happy Hardcore Chip Punk",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_130__Post-Guch_Happy_Hardcore_Chip_Punk.mp3?dest-id=232497",
-        duration: 208810,
+        duration: 3490,
     },
     {
         title: "TWiC 129: Street Fighter II, The Definitive Soundtrack (Brave Wave)",
@@ -386,12 +414,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 127: Hardcore Gameboy, NES and Game Music",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_127_Hardcore_Gameboy_NES_and_Game_Music.mp3?dest-id=232497",
-        duration: 198005,
+        duration: 3305,
     },
     {
         title: "TWiC 126: Synthwave and Jazzy Chill Out",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_126__Synthwave_and_Jazzy_Chill_Out.mp3?dest-id=232497",
-        duration: 212431,
+        duration: 3571,
     },
     {
         title: "TWiC 125: VLAD II & Killer Compilations!",
@@ -406,7 +434,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 123: Eclectic Chiptune Dance Music",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC123_Eclectic_Chiptune_Dance_Music.mp3?dest-id=232497",
-        duration: 208828,
+        duration: 3508,
     },
     {
         title: "TWiC 122: NoCopyright Sounds, Monstercat, Ninety9Lives, GameChops",
@@ -416,7 +444,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 121: Hunty, Zabutom, CrunchyCo, Relay Bros",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_121__Hunty_Zabutom_CrunchyCo_Relay_Bros.mp3?dest-id=232497",
-        duration: 212425,
+        duration: 3565,
     },
     {
         title: "TWiC 120: Malmen, 2A0X, YEON, DDRKirby(ISQ)",
@@ -431,27 +459,27 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 118: Trey Frey, .Mpegasus, Ap0c, Weekly Treats",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_118__Trey_Frey_.Mpegasus_Ap0c_Weekly_Treats.mp3?dest-id=232497",
-        duration: 201604,
+        duration: 3364,
     },
     {
         title: "TWiC 117: Little Sound Assembly, Popskyy, 456",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_117__Little_Sound_Assembly_Popskyy_456.mp3?dest-id=232497",
-        duration: 140457,
+        duration: 2397,
     },
     {
         title: "TWiC 116: Boss Fight, Hitboxx, Electric Children, Harley Likes Music",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_116__Boss_Fight_Hitboxx_Electric_Children_Harley_Likes_Music.mp3?dest-id=232497",
-        duration: 201603,
+        duration: 3363,
     },
     {
         title: "TWiC 115: Vince Kaichan, Lizardking, Chipzel, Fluidvolt",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_115__Vince_Kaichan_Lizardking_Chipzel_Fluidvolt.mp3?dest-id=232497",
-        duration: 212447,
+        duration: 3587,
     },
     {
         title: "TWiC 114: LukHash, Rymdkraft, Chipzel, RainbowDragonEyes",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_114__LukHash_Rymdkraft_Chipzel_RainbowDragonEyes.mp3?dest-id=232497",
-        duration: 201623,
+        duration: 3383,
     },
     {
         title: "TWiC 113: Chiptunes = WIN Volume 4",
@@ -461,7 +489,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 112: Pterodactyl Squad, Shnabubula, Cheapshot, Bknapp",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_112__Pterodactyl_Squad_Shnabubula_Cheapshot_Bknapp.mp3?dest-id=232497",
-        duration: 201629,
+        duration: 3389,
     },
     {
         title: "TWiC 111: C-jeff, GameChops, Laffe The Fox, Dollfin",
@@ -471,12 +499,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 110: Tri Angles, JKLOL, Maxo, Hyper Potions",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_110__Tri_Angles_Eulant_JKLOL_Maxo_Hyper_Potions.mp3?dest-id=232497",
-        duration: 205212,
+        duration: 3432,
     },
     {
         title: "TWiC 109: Brave Wave, Ben Briggs, 2xAA, Dream*Eater",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_109__Brave_Wave_Ben_Briggs_2xAA_Dream_Eater.mp3?dest-id=232497",
-        duration: 205210,
+        duration: 3430,
     },
     {
         title: "TWiC 108: Joshua Morse, Auxcide, Misfit Chris, RobKTA",
@@ -486,7 +514,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 107: Video Game Music, Yoann Turpin, Red&Green",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_107__Video_Game_Music_Yoann_Turpin_Red_Green.mp3?dest-id=232497",
-        duration: 183657,
+        duration: 3117,
     },
     {
         title: "TWiC 106: MmcM (Ubiktune), Mykah, Slime Girls",
@@ -506,7 +534,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 103: Maxo, Zalza, Mega Flare",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_103__Maxo_Zalza_Mega_Flare.mp3?dest-id=232497",
-        duration: 212449,
+        duration: 3589,
     },
     {
         title: "TWiC 102: Shirobon, Matatronaut, Calavera, PANDAstar",
@@ -531,7 +559,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 098: Dj CUTMAN, 4mat, Battle of the Bits, Star Fighter Dreams",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_098__Dj_CUTMAN_4mat_Battle_of_the_Bits_Star_Fighter_Dreams.mp3?dest-id=232497",
-        duration: 208831,
+        duration: 3511,
     },
     {
         title: "TWiC 097: Meganeko, Chipmusic Heroes, Toy Company, Russellian",
@@ -546,7 +574,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 095: Astroskeleton, n00bstar, 456, Sabrepulse",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_095__Astroskeleton_n00bstar_456_Sabrepulse.mp3?dest-id=232497",
-        duration: 205259,
+        duration: 3479,
     },
     {
         title: "TWiC 094: Keiji Yamagishi, Kubbi, Kawaii 8bit",
@@ -561,7 +589,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 092: Rockage, Frequency Festival",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_092__Rockage_Frequency_Festival.mp3?dest-id=232497",
-        duration: 190817,
+        duration: 3197,
     },
     {
         title: "TWiC 091: Weekly Treats 2014 Review",
@@ -576,7 +604,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 089: Joshua Morse, Sabrepulse, Foilverb",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_089__Joshua_Morse_Sabrepulse_Foilverb.mp3?dest-id=232497",
-        duration: 201635,
+        duration: 3395,
     },
     {
         title: "TWiC 088: Year in Review 2014",
@@ -611,7 +639,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 082: Hello World, Inverse Phase, Rochester Chip, General Offensive",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_082__Hello_World_Inverse_Phase_Rochester_Chip_General_Offensive.mp3?dest-id=232497",
-        duration: 198031,
+        duration: 3331,
     },
     {
         title: "TWiC 081: Monomer, Graz, IAYD, MisfitChris",
@@ -621,7 +649,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 080 After Party",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/djcutman_2014-11-06T12_47_19-08_00.mp3?dest-id=232497",
-        duration: 61238,
+        duration: 1058,
     },
     {
         title: 'TWiC 080: Jake "virt" Kaufman, Benjamin Briggs, Overclocked Records',
@@ -646,7 +674,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 076: Fearofdark, Telefuture, Danimal Cannon, Tri Angles",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-10-09T15_12_52-07_00.mp3?dest-id=232497",
-        duration: 194432,
+        duration: 3272,
     },
     {
         title: "TWiC 075: Zackery Wilson, tiasu, Spaceman Fantastiques, CheapBeats = WIN",
@@ -661,7 +689,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 073: V-Axys, ZwamTek, Protodome, Groovemaster303",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-09-18T09_57_42-07_00.mp3?dest-id=232497",
-        duration: 205229,
+        duration: 3449,
     },
     {
         title: "TWiC 072: Chiptunes = WIN: Volume 3 Special!",
@@ -681,7 +709,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 069: Auxicde, Spamtron, n00bstar, Metatronaut",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-07-24T18_34_49-07_00.mp3?dest-id=232497",
-        duration: 205258,
+        duration: 3478,
     },
     {
         title: "TWiC 068: Yoann Turpin, Manami Matsumae, Little Sound Assembly",
@@ -691,32 +719,32 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 067: Breakbeat Heartbeat, Noisewaves, GOTO80",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-07-15T11_53_20-07_00.mp3?dest-id=232497",
-        duration: 208838,
+        duration: 3518,
     },
     {
         title: "TWiC 066: Shovel Knight, 1001 Spikes",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-07-03T11_51_18-07_00.mp3?dest-id=232497",
-        duration: 194418,
+        duration: 3258,
     },
     {
         title: "TWiC 065: Ben Briggs, Bright Primate, Mr. Spastic, Samuel Baker, Chipocrite",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-06-26T16_39_56-07_00.mp3?dest-id=232497",
-        duration: 212448,
+        duration: 3588,
     },
     {
         title: "TWiC 064: James Landino Guest Mix",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-06-19T12_57_07-07_00.mp3?dest-id=232497",
-        duration: 208804,
+        duration: 3484,
     },
     {
         title: "TWiC 063: Year of the Yoshi, DefiantSystems, RetroDigital",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-06-17T15_27_33-07_00.mp3?dest-id=232497",
-        duration: 205254,
+        duration: 3474,
     },
     {
         title: "TWiC 062: Belthesar Guest Mix",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-06-17T13_40_25-07_00.mp3?dest-id=232497",
-        duration: 183614,
+        duration: 3074,
     },
     {
         title: "TWiC 061: 4mat, ectogemia, NNNNNNNNNN, hydden(ReChip)",
@@ -726,17 +754,17 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 060: Lowtoy, VIRUS Empire, FIGHT! Leblanc, RoboRob",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-05-22T12_08_10-07_00.mp3?dest-id=232497",
-        duration: 187211,
+        duration: 3131,
     },
     {
         title: "TWiC 059: Rushjet1, Dj CUTMAN & Ralfington, PICE, Producer Snafu",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-05-15T10_49_01-07_00.mp3?dest-id=232497",
-        duration: 194413,
+        duration: 3253,
     },
     {
         title: "TWiC 058: Mega Ran, Toni Leys, _ensnare_, Alex Lane",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-05-08T11_28_05-07_00.mp3?dest-id=232497",
-        duration: 201627,
+        duration: 3387,
     },
     {
         title: "TWiC 057: Brave Wave, Player Two, Protodome, George and Jonathan",
@@ -746,12 +774,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 056: The TWiC Bundle on Groupees!",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-04-23T09_35_14-07_00.mp3?dest-id=232497",
-        duration: 201647,
+        duration: 3407,
     },
     {
         title: "TWiC 055: EINDBAAS, astroskeleton, Roboctopus, Casshern, suspended FORCE",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-04-17T12_35_01-07_00.mp3?dest-id=232497",
-        duration: 205237,
+        duration: 3457,
     },
     {
         title: "TWiC 054: Snesei, James Landino, Unicorn Princess, H33llxz",
@@ -771,12 +799,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 051: Super Marcato Bros, halc, Galaxy Wolf",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-03-20T11_41_54-07_00.mp3?dest-id=232497",
-        duration: 201640,
+        duration: 3400,
     },
     {
         title: "TWiC 050: Brick BRKer, Zantilla, Raddons",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-03-12T21_44_16-07_00.mp3?dest-id=232497",
-        duration: 201644,
+        duration: 3404,
     },
     {
         title: "TWiC 049: Professor Shyguy, Henry Homesweet, Brave Wave",
@@ -786,12 +814,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 048: Yoann Turpin, Player 2, 56KBPS Records",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-02-26T21_33_33-08_00.mp3?dest-id=232497",
-        duration: 205245,
+        duration: 3465,
     },
     {
         title: "TWiC 047: Zabutom, TORIENA, SoulEye",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-02-20T11_13_35-08_00.mp3?dest-id=232497",
-        duration: 208802,
+        duration: 3482,
     },
     {
         title: "TWiC 046: Big Giant Circles, Trey Frey, Prototype Raptor",
@@ -811,7 +839,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 043: Monodeer, Sabrepulse, Kola Kid",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2014-01-23T11_51_50-08_00.mp3?dest-id=232497",
-        duration: 190850,
+        duration: 3230,
     },
     {
         title: "TWiC 042: Bleepstreet, Dubmood, Cheap Dinosaurs",
@@ -826,7 +854,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 040: Rushjet1, Coda, Note!",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-12-31T22_46_41-08_00.mp3?dest-id=232497",
-        duration: 198027,
+        duration: 3327,
     },
     {
         title: "TWiC 039: ChipWIN, Professor Shyguy, 8bitpeoples (Christmas Special 2013)",
@@ -841,27 +869,27 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 037: Battle of the Bits, Ap0c, ctrl_alt_del",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-12-12T10_42_50-08_00.mp3?dest-id=232497",
-        duration: 208842,
+        duration: 3522,
     },
     {
         title: "TWiC 036: Kenobit, sp00ked, Mega Flare",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-12-05T14_35_12-08_00.mp3?dest-id=232497",
-        duration: 212453,
+        duration: 3593,
     },
     {
         title: "TWiC 035: DDRKirby(ISQ), Doomcloud, Chasing Bleeps, Tri Angles",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-12-02T08_41_50-08_00.mp3?dest-id=232497",
-        duration: 212401,
+        duration: 3541,
     },
     {
         title: "TWiC 034: Disaterpeace, C-Jeff, halc, Fearofdark",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-11-21T11_32_35-08_00.mp3?dest-id=232497",
-        duration: 208803,
+        duration: 3483,
     },
     {
         title: "TWiC 033: Grimecraft, Rushjet1, Ubiktune, uCollective ",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-11-14T10_11_54-08_00.mp3?dest-id=232497",
-        duration: 205216,
+        duration: 3436,
     },
     {
         title: "TWiC 032: Crashfaster, Rick Strife, F0XYr4bB!T, Chibi-tech",
@@ -871,7 +899,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 031: halc & Tuberz McGee, Note!, Victory Road",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-10-30T21_33_41-07_00.mp3?dest-id=232497",
-        duration: 208829,
+        duration: 3509,
     },
     {
         title: "TWiC 030: 8Static Festival Special",
@@ -881,32 +909,32 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 029: Zabutom, Corset Lore, Carlo Castellano, Mykah, Tri Angles",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-10-17T11_58_18-07_00.mp3?dest-id=232497",
-        duration: 198037,
+        duration: 3337,
     },
     {
         title: "TWiC 028: Reboot France, An0va, Professor Shyguy, Boy Without Batteries",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-10-10T07_54_54-07_00.mp3?dest-id=232497",
-        duration: 208801,
+        duration: 3481,
     },
     {
         title: "TWiC 027: Chibi-Tech, DJ Master Kohta, PICE, Tri Angles",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-10-03T10_45_36-07_00.mp3?dest-id=232497",
-        duration: 187229,
+        duration: 3149,
     },
     {
         title: "TWiC 026: Hip Tanaka, Ubiktune, 8bit bEtty, bryface",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-09-26T08_48_31-07_00.mp3?dest-id=232497",
-        duration: 208830,
+        duration: 3510,
     },
     {
         title: "TWiC 025: Silnaye feat Chrono Triggers, She, Tri Angles, nickelPUNK",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-09-19T09_26_19-07_00.mp3?dest-id=232497",
-        duration: 212423,
+        duration: 3563,
     },
     {
         title: "TWiC 024: Joker, PICE, The Dutchess, ChipMusic.org",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-09-12T11_41_31-07_00.mp3?dest-id=232497",
-        duration: 198045,
+        duration: 3345,
     },
     {
         title: "TWiC 023: Chipzel, Fighter X, Boaconstructor",
@@ -921,17 +949,17 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 021: Ben Briggs, Dire Hit, Pxl-Bot, Danimal Cannon, Ipower",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-08-23T20_56_57-07_00.mp3?dest-id=232497",
-        duration: 208823,
+        duration: 3503,
     },
     {
         title: "TWiC 020 After Party: Dj CUTMAN Live @ Toy Company",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/djcutman_2013-08-14T21_28_16-07_00.mp3?dest-id=232497",
-        duration: 165644,
+        duration: 2804,
     },
     {
         title: "TWiC 020: 2A03 Puritans, An0va, Shirobon",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWIC_020__2A03_Puritans_An0va_Shirobon.mp3?dest-id=232497",
-        duration: 205239,
+        duration: 3459,
     },
     {
         title: "TWiC 019: Smiletron, Joshua Morse, Frans Twisk EP",
@@ -941,12 +969,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 018: Bright Primate, ChipMusic.org, 10spd, Raddons,",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-08-01T16_28_01-07_00.mp3?dest-id=232497",
-        duration: 208855,
+        duration: 3535,
     },
     {
         title: "TWiC 017: BitShifter, n00bstar, Kenobit",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-07-28T10_53_42-07_00.mp3?dest-id=232497",
-        duration: 212430,
+        duration: 3570,
     },
     {
         title: "TWiC 016: ChipWIN2, Misift Chris, Storm Blooper",
@@ -961,7 +989,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 014: Overclocked Remix, Yoann Turpin, Starship Amazing",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-07-03T20_45_46-07_00.mp3?dest-id=232497",
-        duration: 208815,
+        duration: 3495,
     },
     {
         title: "TWiC 013: Electric Children, Roboctopus, Arcade High",
@@ -976,22 +1004,22 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 011: Disasterpeace, Smiletron, Xyce, Blitz Lunar",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-06-13T17_40_34-07_00.mp3?dest-id=232497",
-        duration: 194422,
+        duration: 3262,
     },
     {
         title: "TWiC 010: Pause, Telefuture, Chipmusic Heroes",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-06-06T21_02_35-07_00.mp3?dest-id=232497",
-        duration: 212425,
+        duration: 3565,
     },
     {
         title: "TWiC 010 After Party",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-06-06T20_52_58-07_00.mp3?dest-id=232497",
-        duration: 187207,
+        duration: 3127,
     },
     {
         title: "TWiC 009: Sexy Synthesizer, Spamtron, Jredd",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-05-29T22_13_25-07_00.mp3?dest-id=232497",
-        duration: 198018,
+        duration: 3318,
     },
     {
         title: "TWiC 008: FantomenK, A_Rival, DDRKirby(ISQ)",
@@ -1001,12 +1029,12 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 007: Anamanaguchi, Henry Homesweet, The Flight Away",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-05-17T10_58_13-07_00.mp3?dest-id=232497",
-        duration: 194416,
+        duration: 3256,
     },
     {
         title: "TWiC 006: Mega Flare, Güd, Chema64",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-05-08T10_42_45-07_00.mp3?dest-id=232497",
-        duration: 208801,
+        duration: 3481,
     },
     {
         title: "TWiC 005: World 1-2, Kubbi, Little Scale",
@@ -1021,7 +1049,7 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 003: Noise Channel, Ubiktune, Benjamin Briggs",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-04-17T10_12_54-07_00.mp3?dest-id=232497",
-        duration: 194429,
+        duration: 3269,
     },
     {
         title: "TWiC 002: Bubu, Smiletron, Piko Piko Detroit, Yoann Turpin",
@@ -1031,6 +1059,6 @@ export const TWiCPlaylist = [
     {
         title: "TWiC 001: Bleep Love, Danimal Cannon, Joshua Morse, Chipocrite",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/2013-04-10T10_32_29-07_00.mp3?dest-id=232497",
-        duration: 198038,
+        duration: 3338,
     },
 ];
