@@ -57,19 +57,9 @@ export const TWiCPlaylist = [
         duration: 4395,
     },
     {
-        title: "The Finale is Coming (Update from Cutman)",
-        url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_Finale_is_Coming_Soon_Update_from_Cutman.mp3?dest-id=232497",
-        duration: 503,
-    },
-    {
         title: "TWiC 196: FUTURE INTERNET DANCE MUSIC",
         url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_196__Future_Internet_Dance_Music_chapterized.mp3?dest-id=232497",
         duration: 5357,
-    },
-    {
-        title: "The Final Episodes",
-        url: "https://traffic.libsyn.com/secure/thisweekinchiptune/TWiC_Final_Episodes_Announcement.mp3?dest-id=232497",
-        duration: 141,
     },
     {
         title: "TWiC 195: Chiptunes = WIN Volume 6",
