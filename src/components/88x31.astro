@@ -1,4 +1,4 @@
 ---
 const { src, href, title } = Astro.props;
 ---
-<a href={href}><img src={src} title={title} /></a>
+{href ? <a href={href}><img src={src} title={title} /></a> : <img src={src} title={title} />}
