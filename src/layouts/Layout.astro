@@ -26,6 +26,14 @@ const { title, description, image } = Astro.props;
         />
         <link rel="icon" href="/favicon.ico" />
         <title>{title}</title>
+        <style is:global>
+            html {
+                cursor: url(/cursor.png), auto;
+            }
+            a {
+                cursor: url(/cursor-pointer.png) 15 9, auto !important;
+            }
+        </style>
     </head>
     <body>
         <main class="container">
