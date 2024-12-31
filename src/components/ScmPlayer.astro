@@ -1,0 +1,22 @@
+---
+const {
+  skin = "skins/aquaPink/skin.css",
+  volume = 50,
+  autoplay = false,
+  shuffle = true,
+  repeat = 1,
+  placement = "top",
+  showplaylist = false,
+  playlist = "https://thisweekinchiptune.libsyn.com/rss",
+} = Astro.props;
+
+const config = JSON.stringify({ skin, volume, autoplay, shuffle, repeat, placement, showplaylist, playlist });
+---
+
+<!-- SCM Music Player https://www.scmplayer.net -->
+<script
+    is:inline
+    type="text/javascript"
+    src="https://www.scmplayer.net/script.js"
+    data-config={config}></script>
+<!-- SCM Music Player script end -->
