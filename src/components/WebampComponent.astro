@@ -1,0 +1,40 @@
+---
+import type WebampConstructor from "webamp";
+import { TWiCPlaylist } from "../lib/twic-playlist";
+
+declare global {
+    class Webamp extends WebampConstructor {}
+}
+
+type WebampOptions = ConstructorParameters<typeof WebampConstructor>[0];
+
+interface Props extends WebampOptions {}
+
+const props = Object.assign(
+    {
+        initialTracks: TWiCPlaylist.map((item) => ({
+            metaData: {
+                title: item.title,
+                artist: "Dj CUTMAN",
+            },
+            url: item.url,
+            duration: item.duration,
+        }))
+    } satisfies Props,
+    Astro.props
+);
+---
+
+<script is:inline src="https://unpkg.com/webamp"></script>
+<div id="webamp" data-props={JSON.stringify(props)}></div>
+<script>
+    const app = document.getElementById("webamp");
+    const webamp = new Webamp(JSON.parse(app!.dataset.props!));
+    webamp.renderWhenReady(app!);
+</script>
+<style is:inline>
+/* fix for webamp + picocss */
+#webamp :is(*, *::before, *::after) {
+    background-repeat: unset !important;
+}
+</style>
