@@ -19,7 +19,20 @@ const props = Object.assign(
             },
             url: item.url,
             duration: item.duration,
-        }))
+        })),
+        initialSkin: {
+            url: "https://r2.webampskins.org/skins/d6010aa35bed659bc1311820daa4b341.wsz",
+        },
+        availableSkins: [
+            {
+                name: "Bento Classified",
+                url: "https://r2.webampskins.org/skins/d6010aa35bed659bc1311820daa4b341.wsz", // https://skins.webamp.org/skin/d6010aa35bed659bc1311820daa4b341/Bento_Classified.wsz/
+            },
+            {
+                name: "Lain Amp",
+                url: "https://r2.webampskins.org/skins/007a6e97e91d44381dcf13d14c55dfd3.wsz", // https://skins.webamp.org/skin/007a6e97e91d44381dcf13d14c55dfd3/LainAMP2.zip/
+            },
+        ],
     } satisfies Props,
     Astro.props
 );
@@ -27,14 +40,19 @@ const props = Object.assign(
 
 <script is:inline src="https://unpkg.com/webamp"></script>
 <div id="webamp" data-props={JSON.stringify(props)}></div>
+<style is:inline>
+    #webamp {
+        float: right;
+    }
+</style>
 <script>
     const app = document.getElementById("webamp");
     const webamp = new Webamp(JSON.parse(app!.dataset.props!));
     webamp.renderWhenReady(app!);
 </script>
 <style is:inline>
-/* fix for webamp + picocss */
-#webamp :is(*, *::before, *::after) {
-    background-repeat: unset !important;
-}
+    /* fix for webamp + picocss */
+    #webamp :is(*, *::before, *::after) {
+        background-repeat: unset !important;
+    }
 </style>
