@@ -1,9 +1,11 @@
 ---
 interface Props {
     src: string;
+    title?: string;
     href?: string;
-    title: string;
+    alt?: string;
 }
-const { src, href, title } = Astro.props;
+const { src, href, title, alt } = Astro.props;
 ---
-{href ? <a href={href}><img src={src} title={title} /></a> : <img src={src} title={title} />}
+
+{href ? <a href={href}><img src={src} title={title ?? alt} alt={alt} /></a> : <img src={src} title={title ?? alt} alt={alt} />}
