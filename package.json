@@ -12,6 +12,8 @@
     "@astrojs/mdx": "^4.0.3",
     "@astrojs/solid-js": "^5.0.1",
     "@atcute/client": "^2.0.6",
+    "@atcute/oauth-browser-client": "^1.0.9",
+    "@atcute/tid": "^1.0.2",
     "@atcute/whitewind": "^1.0.4",
     "@atproto/syntax": "^0.3.1",
     "@giscus/solid": "^3.1.0",
@@ -23,5 +25,8 @@
     "solid-js": "^1.9.4",
     "webamp": "0.0.0-next-6d3b7fc"
   },
-  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
+  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c",
+  "devDependencies": {
+    "@types/node": "^22.10.5"
+  }
 }

@@ -1,0 +1,31 @@
+---
+import PostControls from "../../components/PostControls";
+import Layout from "../../layouts/Layout.astro";
+import { getPosts } from "../../lib/atproto/unauthed-client";
+
+const posts = await getPosts(true);
+---
+
+<Layout title="Maxine's Blog - Admin Panel">
+    <a href="/blog/new">New Post</a>
+
+    <ul>
+        {
+            posts.map(({ value: post, uri: { rkey } }) => (
+                <li>
+                    <a href={`/post/${rkey}`}>{post.title}</a>
+                    <br />
+                    Posted on{" "}
+                    {post.createdAt
+                        ? new Date(post.createdAt).toLocaleDateString("en-GB", {
+                              timeZone: "America/Sao_Paulo",
+                              timeZoneName: "short",
+                          })
+                        : "(unknown)"}
+                    <a href={`/blog/edit/${rkey}`}>Edit</a>
+                    <PostControls client:only="solid" rkey={rkey} post={post} />
+                </li>
+            ))
+        }
+    </ul>
+</Layout>

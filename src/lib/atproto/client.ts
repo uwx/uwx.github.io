@@ -1,25 +1,70 @@
-import type { At, Records } from '@atcute/client/lexicons';
-import '@atcute/whitewind/lexicons';
-import type { AtUri } from '@atproto/syntax';
-import { KittyAgent } from "kitty-agent";
+import type { At, ComWhtwndBlogEntry } from "@atcute/client/lexicons";
+import { now as tidNow } from "@atcute/tid";
+import type { KittyAgent } from "kitty-agent";
 
-const PDS = 'https://bsky.social';
-const HANDLE = 'spearcat.bsky.social';
+export class BlogClient {
+    constructor(private readonly loginState: {
+        readonly handle: string;
+        readonly did: At.DID;
+        readonly pds: string;
+        readonly agent: KittyAgent;
+    }) {}
 
-const agent = KittyAgent.createUnauthed(PDS);
+    get agent(): KittyAgent {
+        return this.loginState.agent;
+    }
 
-// let posts: {
-//     cid: At.CID;
-//     uri: AtUri;
-//     value: Records['com.whtwnd.blog.entry'];
-// }[] | undefined;
-export async function getPosts() {
-    return (await agent.paginatedList({
-        collection: 'com.whtwnd.blog.entry',
-        repo: HANDLE,
-    })).records.filter(post => post.value.visibility === 'url' || post.value.visibility === 'public');
-}
+    get user() {
+        return this.loginState;
+    }
 
-export async function getPost(rkey: string) {
-    return getPosts().then(posts => posts.find(post => post.uri.rkey === rkey));
+    async updatePost(newTitle: string, newContent: string, rkey: string, existing: ComWhtwndBlogEntry.Record) {
+        await this.agent.put({
+            collection: 'com.whtwnd.blog.entry',
+            repo: this.user.did,
+            rkey,
+            record: {
+                ...existing,
+                title: newTitle,
+                content: newContent,
+            }
+        });
+    }
+
+    async createPost(title: string, content: string) {
+        const rkey = tidNow();
+        await this.agent.put({
+            collection: 'com.whtwnd.blog.entry',
+            repo: this.user.did,
+            rkey,
+            record: {
+                $type: 'com.whtwnd.blog.entry',
+                content,
+                createdAt: new Date().toISOString(),
+                title,
+                visibility: 'url',
+            }
+        });
+        return rkey;
+    }
+
+    async setVisibility(rkey: string, post: ComWhtwndBlogEntry.Record, visibility: "public" | "url" | "author") {
+        await this.agent.put({
+            collection: 'com.whtwnd.blog.entry',
+            repo: this.user.did,
+            rkey,
+            record: {
+                ...post,
+                visibility,
+            }
+        });
+    }
+
+    async deletePost(rkey: string) {
+        await this.agent.delete({
+            collection: 'com.whtwnd.blog.entry',
+            repo: this.user.did,
+            rkey
+        });
+    }
 }

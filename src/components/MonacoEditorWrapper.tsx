@@ -1,6 +1,7 @@
-import { createSignal } from 'solid-js';
+import { createEffect, createSignal, on } from 'solid-js';
 import { MonacoEditor } from '../extern/solid-monaco/src/MonacoEditor';
 import type * as monaco from 'monaco-editor';
+// biome-ignore lint/suspicious/noRedeclare: intentional
 type monaco = typeof monaco;
 
 const MONACO_EDITOR_OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
@@ -35,34 +36,21 @@ self.MonacoEnvironment = {
     }
 };
 
-export function MonacoEditorWrapper() {
-    const [value, setValue] = createSignal('');
+export default function MonacoEditorWrapper(props: { value: string, onValueChanged: (value: string) => void }) {
+    const [value, setValue] = createSignal(props.value);
+
+    createEffect(on(value, value => props.onValueChanged(value)));
 
     const handleMount = (monaco: monaco, editor: monaco.editor.IStandaloneCodeEditor) => {
         monaco.editor.setTheme('vs-dark');
     };
     return <div>
-        <div class="pico" style={`
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: 1fr;
-            grid-column-gap: 1rem;
-            grid-row-gap: 0px;
-            margin: 1rem 1rem 0 1rem;
-        `}>
-            <div style="grid-area: 1 / 1 / 2 / 5;">
-                <input type="text" placeholder="Post title" />
-            </div>
-            <div style="grid-area: 1 / 5 / 2 / 6;">
-                <button type="submit">Publish</button>
-            </div>
-        </div>
         <MonacoEditor
             options={MONACO_EDITOR_OPTIONS}
             language='markdown'
             theme='vs-dark'
-            value=''
-            height="calc(100vh - 115.5px - 86.6px)"
+            value={value()}
+            height="calc(100vh - 78.37px - 1rem)"
             onChange={value => {
                 setValue(value);
             }}

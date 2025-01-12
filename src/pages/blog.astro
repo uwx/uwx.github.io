@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getPosts } from "../lib/atproto/client";
+import { getPosts } from "../lib/atproto/unauthed-client";
 
 const posts = await getPosts();
 ---
@@ -10,7 +10,7 @@ const posts = await getPosts();
     <p>This is where I put some of my writings.</p>
     <ul>
         {posts.map(({value: post, uri: { rkey }}) => <li>
-            <a href={`/posts/${rkey}`}>{post.title}</a>
+            <a href={`/post/${rkey}`}>{post.title}</a>
             <br />
             Posted on {post.createdAt ? new Date(post.createdAt).toLocaleDateString('en-GB', {
                 timeZone: 'America/Sao_Paulo',

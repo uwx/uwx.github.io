@@ -1,8 +1,8 @@
 ---
-import { MonacoEditorWrapper } from "../../components/MonacoEditorWrapper"
+import NewOrEditPage from "../../components/NewOrEditPage"
 import BaseLayout from "../../layouts/BaseLayout.astro"
 ---
 
 <BaseLayout title="New blog post">
-    <MonacoEditorWrapper client:only="solid" />
+    <NewOrEditPage client:only="solid" />
 </BaseLayout>

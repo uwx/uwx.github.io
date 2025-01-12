@@ -1,0 +1,20 @@
+---
+import NewOrEditPage from '../../../components/NewOrEditPage';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getPost, getPosts } from '../../../lib/atproto/unauthed-client';
+
+export async function getStaticPaths() {
+    const posts = await getPosts();
+
+    return posts.map(post => ({ params: { rkey: post.uri.rkey } }));
+}
+
+const { rkey } = Astro.params;
+
+const { value: post } = (await getPost(rkey))!;
+
+---
+
+<BaseLayout title={`Edit post ${post.title}`}>
+    <NewOrEditPage client:only {rkey} {post} />
+</BaseLayout>
