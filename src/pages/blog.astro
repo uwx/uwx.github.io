@@ -3,10 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import { getPosts } from "../lib/atproto/client";
 
 const posts = await getPosts();
-
 ---
 
 <Layout title="Maxine's Blog">
+    <h1>Maxine's Blog</h1>
+    <p>This is where I put some of my writings.</p>
     <ul>
         {posts.map(({value: post, uri: { rkey }}) => <li>
             <a href={`/posts/${rkey}`}>{post.title}</a>
