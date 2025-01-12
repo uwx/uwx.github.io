@@ -4,6 +4,8 @@ import { marked } from 'marked';
 import Layout from '../../layouts/Layout.astro';
 import { getPost, getPosts } from '../../lib/atproto/client';
 
+import Giscus from '@giscus/solid';
+
 export async function getStaticPaths() {
     const posts = await getPosts();
 
@@ -23,6 +25,27 @@ const content = marked.parse(post.content);
     width: post.ogp.width,
 } : undefined}>
     <h1>{post.title}</h1>
-    <p>Written by Maxine on {post.createdAt ? new Date(post.createdAt).toLocaleString('en-GB') : '(unknown)'}</p>
+    <p>Written by Maxine on {post.createdAt ? new Date(post.createdAt).toLocaleDateString('en-GB', {
+        timeZone: 'America/Sao_Paulo',
+        timeZoneName: 'short',
+    }) : '(unknown)'}</p>
+
     <article set:html={content} />
+
+    <Giscus
+        client:only="solid"
+        id="comments"
+        repo="uwx/uwx.github.io"
+        repoId="MDEwOlJlcG9zaXRvcnkyODgxMjM5OTA="
+        category="Comments"
+        categoryId="DIC_kwDOESxsVs4Cl871"
+        mapping="pathname"
+        strict="1"
+        reactionsEnabled="1"
+        emitMetadata="0"
+        inputPosition="top"
+        theme="dark"
+        lang="en"
+        loading="lazy"
+    />
 </Layout>

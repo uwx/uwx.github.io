@@ -1,0 +1,3 @@
+[submodule "src/extern/solid-monaco"]
+	path = src/extern/solid-monaco
+	url = https://github.com/atweb-solid/solid-monaco

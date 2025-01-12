@@ -8,13 +8,13 @@ const HANDLE = 'spearcat.bsky.social';
 
 const agent = KittyAgent.createUnauthed(PDS);
 
-let posts: {
-    cid: At.CID;
-    uri: AtUri;
-    value: Records['com.whtwnd.blog.entry'];
-}[] | undefined;
+// let posts: {
+//     cid: At.CID;
+//     uri: AtUri;
+//     value: Records['com.whtwnd.blog.entry'];
+// }[] | undefined;
 export async function getPosts() {
-    return posts ??= (await agent.list({
+    return (await agent.list({
         collection: 'com.whtwnd.blog.entry',
         repo: HANDLE,
     })).records;

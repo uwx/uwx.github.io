@@ -1,0 +1,41 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+	image?: ImageMetadata | {src: string};
+}
+
+const { title, description, image } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
+        <meta name="generator" content={Astro.generator} />
+
+        <meta property="og:title" content={title} />
+        <meta property="og:type" content="website" />
+        {image ? <meta property="og:image" content={image?.src} /> : <></>}
+        <meta property="og:description" content={description}>
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.conditional.fuchsia.min.css"
+        />
+        <link rel="icon" href="/favicon.ico" />
+        <title>{title}</title>
+        <style is:global>
+            html {
+                cursor: url(/cursor.png), auto;
+            }
+            a {
+                cursor: url(/cursor-pointer.png) 15 9, auto !important;
+            }
+        </style>
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>
