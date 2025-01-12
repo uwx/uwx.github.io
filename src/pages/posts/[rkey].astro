@@ -1,0 +1,28 @@
+---
+import { marked } from 'marked';
+
+import Layout from '../../layouts/Layout.astro';
+import { getPost, getPosts } from '../../lib/atproto/client';
+
+export async function getStaticPaths() {
+    const posts = await getPosts();
+
+    return posts.map(post => ({ params: { rkey: post.uri.rkey } }));
+}
+
+const { rkey } = Astro.params;
+
+const { value: post } = (await getPost(rkey))!;
+
+const content = marked.parse(post.content);
+---
+
+<Layout title={post.title ?? 'Blog post'} image={post.ogp ? {
+    src: post.ogp.url,
+    height: post.ogp.height,
+    width: post.ogp.width,
+} : undefined}>
+    <h1>{post.title}</h1>
+    <p>Written by Maxine on {post.createdAt ? new Date(post.createdAt) : '(unknown)'}</p>
+    <article set:html={content} />
+</Layout>
