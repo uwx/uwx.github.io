@@ -23,6 +23,6 @@ const content = marked.parse(post.content);
     width: post.ogp.width,
 } : undefined}>
     <h1>{post.title}</h1>
-    <p>Written by Maxine on {post.createdAt ? new Date(post.createdAt) : '(unknown)'}</p>
+    <p>Written by Maxine on {post.createdAt ? new Date(post.createdAt).toLocaleString('en-GB') : '(unknown)'}</p>
     <article set:html={content} />
 </Layout>
