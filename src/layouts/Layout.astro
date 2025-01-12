@@ -11,6 +11,14 @@ const { title, description, image } = Astro.props;
 ---
 <BaseLayout {title} {description} {image}>
     <div class="pico">
+        <header class="container">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                </ul>
+            </nav>
+        </header>
         <main class="container">
             <slot />
         </main>
