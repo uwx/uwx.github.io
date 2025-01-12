@@ -14,7 +14,7 @@ const agent = KittyAgent.createUnauthed(PDS);
 //     value: Records['com.whtwnd.blog.entry'];
 // }[] | undefined;
 export async function getPosts() {
-    return (await agent.list({
+    return (await agent.paginatedList({
         collection: 'com.whtwnd.blog.entry',
         repo: HANDLE,
     })).records.filter(post => post.value.visibility === 'url' || post.value.visibility === 'public');
