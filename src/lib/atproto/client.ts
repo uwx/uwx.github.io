@@ -17,7 +17,7 @@ export async function getPosts() {
     return (await agent.list({
         collection: 'com.whtwnd.blog.entry',
         repo: HANDLE,
-    })).records;
+    })).records.filter(post => post.value.visibility === 'url' || post.value.visibility === 'public');
 }
 
 export async function getPost(rkey: string) {
