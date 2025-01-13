@@ -20,16 +20,16 @@ export default function NewOrEditPage(params: { rkey?: string, post?: ComWhtwndB
         }
     }
 
-    async function submit() {
+    async function submit(visibility: "public" | "url" | "author") {
         const auser = user();
 
         if (!auser) return;
 
         if (params.rkey) {
-            await auser.client.updatePost(title(), value(), params.rkey, params.post ?? {$type: 'com.whtwnd.blog.entry', content: ''});
+            await auser.client.updatePost(title(), value(), visibility, params.rkey, params.post ?? {$type: 'com.whtwnd.blog.entry', content: ''});
             document.location.pathname = `/post/${params.rkey}`;
         } else {
-            const rkey = await auser.client.createPost(title(), value());
+            const rkey = await auser.client.createPost(title(), value(), visibility);
             document.location.pathname = `/post/${rkey}`;
         }
     }
@@ -40,17 +40,21 @@ export default function NewOrEditPage(params: { rkey?: string, post?: ComWhtwndB
             ? <div>
                 <div class="pico" style={`
                     display: grid;
-                    grid-template-columns: repeat(5, 1fr);
+                    grid-template-columns: repeat(10, 1fr);
                     grid-template-rows: 1fr;
                     grid-column-gap: 1rem;
                     grid-row-gap: 0px;
+
                     margin: 1rem 1rem 0 1rem;
                 `}>
-                    <div style="grid-area: 1 / 1 / 2 / 5;">
+                    <div style="grid-area: 1 / 1 / 2 / 8;">
                         <input type="text" placeholder="Post title" value={title()} onInput={el => setTitle(el.currentTarget.value)} />
                     </div>
-                    <div style="grid-area: 1 / 5 / 2 / 6;">
-                        <button type="submit" onClick={submit}>Publish</button>
+                    <div style="grid-area: 1 / 8 / 2 / 9;">
+                        <button type="submit" onClick={() => submit('url')}>Publish</button>
+                    </div>
+                    <div style="grid-area: 1 / 9 / 2 / 11;">
+                        <button type="submit" onClick={() => submit('author')}>Publish Unlisted</button>
                     </div>
                 </div>
 

@@ -18,7 +18,7 @@ export class BlogClient {
         return this.loginState;
     }
 
-    async updatePost(newTitle: string, newContent: string, rkey: string, existing: ComWhtwndBlogEntry.Record) {
+    async updatePost(newTitle: string, newContent: string, newVisibility: "public" | "url" | "author", rkey: string, existing: ComWhtwndBlogEntry.Record) {
         await this.agent.put({
             collection: 'com.whtwnd.blog.entry',
             repo: this.user.did,
@@ -27,11 +27,12 @@ export class BlogClient {
                 ...existing,
                 title: newTitle,
                 content: newContent,
+                visibility: newVisibility,
             }
         });
     }
 
-    async createPost(title: string, content: string) {
+    async createPost(title: string, content: string, visibility: "public" | "url" | "author") {
         const rkey = tidNow();
         await this.agent.put({
             collection: 'com.whtwnd.blog.entry',
@@ -42,7 +43,7 @@ export class BlogClient {
                 content,
                 createdAt: new Date().toISOString(),
                 title,
-                visibility: 'url',
+                visibility,
             }
         });
         return rkey;
