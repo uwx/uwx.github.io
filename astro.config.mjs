@@ -51,5 +51,6 @@ export default defineConfig({
     server: {
         host: SERVER_HOST,
         port: SERVER_PORT,
-    }
+    },
+    site: "https://uwx.github.io"
 });
