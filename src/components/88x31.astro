@@ -1,0 +1,19 @@
+---
+import Image from 'astro/components/Image.astro';
+
+interface Props {
+    src: string | ImageMetadata | Promise<{ default: ImageMetadata; }>;
+    title?: string;
+    href?: string;
+    alt?: string;
+}
+const { src, href, title, alt } = Astro.props;
+---
+
+{typeof src === 'string'
+    ? href
+        ? <a href={href}><Image src={src} title={title ?? alt} alt={alt ?? null} width={88} height={31} /></a>
+        : <Image src={src} title={title ?? alt} alt={alt ?? null} width={88} height={31} />
+    : href
+        ? <a href={href}><Image src={src} title={title ?? alt} alt={alt ?? null} /></a>
+        : <Image src={src} title={title ?? alt} alt={alt ?? null} />}
