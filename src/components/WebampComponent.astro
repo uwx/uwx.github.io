@@ -40,17 +40,16 @@ const props = Object.assign(
 
 <script is:inline src="https://unpkg.com/webamp"></script>
 <div id="webamp" data-props={JSON.stringify(props)}></div>
-<style is:inline>
-    #webamp {
-        float: right;
-    }
-</style>
 <script>
     const app = document.getElementById("webamp");
     const webamp = new Webamp(JSON.parse(app!.dataset.props!));
     webamp.renderWhenReady(app!);
 </script>
-<style is:inline>
+<style is:global>
+    #webamp {
+        float: right;
+    }
+
     /* fix for webamp + picocss */
     #webamp :is(*, *::before, *::after) {
         background-repeat: unset !important;
