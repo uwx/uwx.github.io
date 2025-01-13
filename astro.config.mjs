@@ -24,9 +24,9 @@ if (isBuild) {
         const url = new URL(metadata.redirect_uris[0]);
         return `http://${SERVER_HOST}:${SERVER_PORT}${url.pathname}`;
     })();
-    
+
     const clientId = `http://localhost?redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(metadata.scope)}`;
-    
+
     env.VITE_DEV_SERVER_PORT = String(SERVER_PORT);
     env.VITE_OAUTH_CLIENT_ID = clientId;
     env.VITE_OAUTH_REDIRECT_URI = redirectUri;
