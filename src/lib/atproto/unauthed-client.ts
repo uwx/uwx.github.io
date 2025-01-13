@@ -21,5 +21,9 @@ export async function getPosts(includeHidden = false) {
 }
 
 export async function getPost(rkey: string) {
-    return getPosts().then(posts => posts.find(post => post.uri.rkey === rkey));
+    return await agent.get({
+        collection: 'com.whtwnd.blog.entry',
+        repo: HANDLE,
+        rkey
+    });
 }
