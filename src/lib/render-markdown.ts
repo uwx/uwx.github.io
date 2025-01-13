@@ -6,6 +6,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeExpressiveCode, { type RehypeExpressiveCodeOptions } from 'rehype-expressive-code';
 import rehypeSanitize from 'rehype-sanitize';
 import rehypeStringify from 'rehype-stringify';
+import rehypeTwemojify from 'rehype-twemojify';
 
 export async function renderMarkdown(content: string) {
     const vfile = await unified()
@@ -21,8 +22,15 @@ export async function renderMarkdownFancy(markdown: string) {
         .use(remarkRehype)
         .use(rehypeSanitize)
         .use(rehypeExpressiveCode, {
-
         } satisfies RehypeExpressiveCodeOptions)
+        // @ts-expect-error
+        .use(rehypeTwemojify, {
+            params: { w: 32, q: 100 },
+            twemoji: {
+                baseUrl: 'https://uwx.github.io/fluentui-twemoji-3d/export/3D_png',
+            },
+            exclude: ['©', '®', '™', '℗', '↩'],
+        })
         .use(rehypeStringify)
         .process(markdown);
 

@@ -1,0 +1,8 @@
+@use "@picocss/pico/scss/pico" with (
+    $theme-color: "fuchsia"
+);
+
+// Rehype emoji
+.emoji {
+    width: 24px;
+}
