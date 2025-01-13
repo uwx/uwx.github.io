@@ -3,10 +3,10 @@ import Layout from '../../layouts/Layout.astro';
 import { getPost, getPosts } from '../../lib/atproto/unauthed-client';
 
 import Giscus from '@giscus/solid';
-import { renderMarkdown } from '../../lib/render-markdown';
+import { renderMarkdownFancy } from '../../lib/render-markdown';
 
 export async function getStaticPaths() {
-    const posts = await getPosts();
+    const posts = await getPosts(true);
 
     return posts.map(post => ({ params: { rkey: post.uri.rkey } }));
 }
@@ -15,7 +15,7 @@ const { rkey } = Astro.params;
 
 const { value: post } = (await getPost(rkey))!;
 
-const content = await renderMarkdown(post.content);
+const content = await renderMarkdownFancy(post.content);
 ---
 
 <Layout title={post.title ?? 'Blog post'} image={post.ogp ? {
