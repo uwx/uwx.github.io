@@ -4,7 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getPost, getPosts } from '../../../lib/atproto/unauthed-client';
 
 export async function getStaticPaths() {
-    const posts = await getPosts();
+    const posts = await getPosts(true);
 
     return posts.map(post => ({ params: { rkey: post.uri.rkey } }));
 }
