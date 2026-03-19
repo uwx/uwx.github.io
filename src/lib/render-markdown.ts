@@ -23,7 +23,6 @@ export async function renderMarkdownFancy(markdown: string) {
         .use(rehypeSanitize)
         .use(rehypeExpressiveCode, {
         } satisfies RehypeExpressiveCodeOptions)
-        // @ts-expect-error
         .use(rehypeTwemojify, {
             params: { w: 32, q: 100 },
             twemoji: {

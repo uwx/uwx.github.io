@@ -1,6 +1,73 @@
-@use "@picocss/pico/scss/pico" with (
-    $theme-color: "fuchsia"
+@use "@picocss/pico/scss/pico" with ($theme-color: "fuchsia"
 );
+
+@use "@picocss/pico/scss/themes/default/light";
+@use "@picocss/pico/scss/themes/default/dark";
+@use "@picocss/pico/scss/settings" as *;
+
+// https://github.com/tivac/fixie/blob/master/hacks.js
+@mixin ie11 {
+    @at-root {
+
+        _:-ms-fullscreen,
+        & {
+            @content;
+        }
+    }
+}
+
+@mixin ie10plus {
+    @at-root {
+
+        _:-ms-lang(x),
+        & {
+            @content;
+        }
+    }
+}
+
+@mixin ie9plus {
+    @at-root {
+        @media screen and (min-width:0\0) and (min-resolution: +72dpi) {
+            & {
+                @content;
+            }
+        }
+    }
+}
+
+// IE11 postcss-custom-properties-friendly theming
+
+:root {
+    @include dark.theme;
+}
+
+// Light color scheme (Default)
+// Can be forced with data-theme="light"
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+    @include light.theme;
+}
+
+// Dark color scheme (Auto)
+// Automatically enabled if user has Dark mode enabled
+@media only screen and (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        @include dark.theme;
+    }
+}
+
+@media only screen and (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+        @include light.theme;
+    }
+}
+
+// Dark color scheme (Forced)
+// Enabled if forced with data-theme="dark"
+[data-theme="dark"] {
+    @include dark.theme;
+}
 
 // Rehype emoji
 .emoji {

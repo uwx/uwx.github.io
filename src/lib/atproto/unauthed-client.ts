@@ -3,8 +3,8 @@ import '@atcute/whitewind/lexicons';
 import type { AtUri } from '@atproto/syntax';
 import { KittyAgent } from "kitty-agent";
 
-export const PDS = 'https://bsky.social';
-export const HANDLE = 'spearcat.bsky.social';
+export const PDS = 'https://eepy.day';
+export const HANDLE = 'maxine.puppykitty.racing';
 
 const agent = KittyAgent.createUnauthed(PDS);
 
