@@ -53,6 +53,9 @@ importers:
       monaco-editor:
         specifier: ^0.52.2
         version: 0.52.2
+      postcss-calc:
+        specifier: ^10.1.1
+        version: 10.1.1(postcss@8.4.49)
       rehype-expressive-code:
         specifier: ^0.39.0
         version: 0.39.0
@@ -2704,6 +2707,12 @@ packages:
     engines: {node: '>=20.19.0'}
     peerDependencies:
       postcss: ^8.4
+
+  postcss-calc@10.1.1:
+    resolution: {integrity: sha512-NYEsLHh8DgG/PRH2+G9BTuUdtf9ViS+vdoQ0YA5OQdGsfN4ztiwtDWNtBl9EKeqNMFnIu8IKZ0cLxEQ5r5KVMw==}
+    engines: {node: ^18.12 || ^20.9 || >=22.0}
+    peerDependencies:
+      postcss: ^8.4.38
 
   postcss-clamp@4.1.0:
     resolution: {integrity: sha512-ry4b1Llo/9zz+PKC+030KUnPITTJAHeOwjfAyyB60eT0AorGLdzp52s31OsPRHRf8NchkgFoG2y6fCfn1IV1Ow==}
@@ -6889,6 +6898,12 @@ snapshots:
     dependencies:
       postcss: 8.4.49
       postcss-selector-parser: 7.1.1
+
+  postcss-calc@10.1.1(postcss@8.4.49):
+    dependencies:
+      postcss: 8.4.49
+      postcss-selector-parser: 7.1.1
+      postcss-value-parser: 4.2.0
 
   postcss-clamp@4.1.0(postcss@8.4.49):
     dependencies:

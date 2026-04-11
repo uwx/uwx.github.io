@@ -1,5 +1,7 @@
 // @ts-check
 
+const postcssCalc = require('postcss-calc');
+
 const postcssPresetEnv = /** @type {typeof import('postcss-preset-env').default} */ (/** @type {unknown} */ (require('postcss-preset-env')));
 
 const selectorParser = require('postcss-selector-parser');
@@ -146,7 +148,8 @@ module.exports = {
         browsers: ">= .01%, ie>=7",
         stage: 0,
       }),
-      postcssWhereFallback()
+      postcssWhereFallback(),
+      postcssCalc({})
     ],
   };
   
