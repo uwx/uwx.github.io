@@ -1,4 +1,6 @@
 // @ts-check
+import 'dotenv/config';
+
 import { defineConfig } from 'astro/config';
 
 import mdx from '@astrojs/mdx';
@@ -39,14 +41,18 @@ env.VITE_OAUTH_SCOPE = metadata.scope;
 export default defineConfig({
     integrations: [mdx(), solidJs()],
     env: {
-        schema: Object.fromEntries(
-            Object.entries(env).map(([k, v]) => {
-                return [
-                    k,
-                    envField.string({ context: "client", access: "public", optional: true, default: v }),
-                ]
-            })
-        )
+        schema: {
+            ...Object.fromEntries(
+                Object.entries(env).map(([k, v]) => {
+                    return [
+                        k,
+                        envField.string({ context: "client", access: "public", optional: true, default: v }),
+                    ]
+                })
+            ),
+            IQDB_CLIENT_ID: envField.string({ context: "server", access: "public", optional: false, default: process.env.IQDB_CLIENT_ID }),
+            IQDB_CLIENT_SECRET: envField.string({ context: "server", access: "public", optional: false, default: process.env.IQDB_CLIENT_SECRET }),
+        }
     },
     server: {
         host: SERVER_HOST,

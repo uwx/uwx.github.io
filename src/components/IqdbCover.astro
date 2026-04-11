@@ -1,0 +1,21 @@
+---
+import { Image } from 'astro:assets';
+import { getBestCoverId } from '../lib/iqdb';
+
+interface Props {
+    game: string;
+    className?: string;
+    floatRight?: boolean;
+}
+
+const coverId = await getBestCoverId(Astro.props.game);
+---
+
+{coverId && <Image alt={`Cover art for ${Astro.props.game}`} class={Astro.props.className + (Astro.props.floatRight ? ' float-right' : '')} src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${coverId}.png`} width={150} height={200} />}
+
+<style is:global>
+    .float-right {
+        float: right;
+        margin-left: 2rem;
+    }
+</style>
