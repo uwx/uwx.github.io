@@ -73,3 +73,58 @@
 .emoji {
     width: 24px;
 }
+
+.project-grid, .skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.project-card, .skill-card {
+    border: 1px solid var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
+    padding: 1rem;
+
+    > p {
+        margin-bottom: 0;
+    }
+}
+
+.skill-chart {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.35rem 0.75rem;
+    margin: 1rem 0;
+    align-items: center;
+    max-width: 400px;
+}
+
+.skill-row {
+    display: contents;
+}
+
+.skill-name {
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.language-skill {
+    font-size: 0.85rem;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.skill-bars {
+    display: block;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--pico-primary);
+    width: 0%;
+}
+
+.project-year {
+    // we get a little evil with it
+    top: calc(-1 * var(--pico-typography-spacing-vertical));
+    position: relative;
+}
