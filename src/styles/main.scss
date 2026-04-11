@@ -123,8 +123,11 @@
     width: 0%;
 }
 
+.project-card > h5 {
+    margin-bottom: 0 !important;
+}
+
 .project-year {
-    // we get a little evil with it
-    top: calc(-1 * var(--pico-typography-spacing-vertical));
-    position: relative;
+    display: block;
+    margin-bottom: var(--pico-typography-spacing-vertical);
 }
