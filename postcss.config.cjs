@@ -141,6 +141,57 @@ function postcssWhereRootToHtml() {
 }
 postcssWhereRootToHtml.postcss = true;
 
+/**
+ * Rounds RGB decimal values to integers for IE11 compatibility
+ * while preserving the original rule
+ */
+function postcssRoundRgb() {
+  return {
+    postcssPlugin: 'postcss-round-rgb',
+    /**
+     * @param {import('postcss').Declaration} decl
+     */
+    Declaration(decl) {
+      // Match rgb/rgba with decimal values
+      const rgbRegex = /rgb(a?)\s*\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)(?:\s*,\s*([\d.]+))?\s*\)/gi;
+
+      if (!rgbRegex.test(decl.value)) return;
+
+      // Reset regex
+      rgbRegex.lastIndex = 0;
+
+      let hasDecimals = false;
+      const newValue = decl.value.replace(rgbRegex, (match, a, r, g, b, alpha) => {
+        const rVal = parseFloat(r);
+        const gVal = parseFloat(g);
+        const bVal = parseFloat(b);
+
+        // Check if any value has decimals
+        if (rVal % 1 !== 0 || gVal % 1 !== 0 || bVal % 1 !== 0) {
+          hasDecimals = true;
+        }
+
+        const roundedR = Math.round(rVal);
+        const roundedG = Math.round(gVal);
+        const roundedB = Math.round(bVal);
+
+        if (alpha !== undefined) {
+          return `rgba(${roundedR}, ${roundedG}, ${roundedB}, ${alpha})`;
+        } else {
+          return `rgb${a}(${roundedR}, ${roundedG}, ${roundedB})`;
+        }
+      });
+
+      // Only add rounded version if there were decimals
+      if (hasDecimals && newValue !== decl.value) {
+        // Insert the rounded version before the original
+        decl.cloneBefore({ value: newValue });
+      }
+    },
+  };
+}
+postcssRoundRgb.postcss = true;
+
 module.exports = {
     plugins: [
       postcssWhereRootToHtml(),
@@ -149,7 +200,7 @@ module.exports = {
         stage: 0,
       }),
       postcssWhereFallback(),
-      postcssCalc({})
+      postcssCalc({}),
+      postcssRoundRgb()
     ],
   };
-  

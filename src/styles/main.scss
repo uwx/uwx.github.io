@@ -1,5 +1,4 @@
-@use "@picocss/pico/scss/pico" with ($theme-color: "fuchsia"
-);
+@use "@picocss/pico/scss/pico" with ($theme-color: "fuchsia");
 
 @use "@picocss/pico/scss/themes/default/light";
 @use "@picocss/pico/scss/themes/default/dark";
@@ -74,11 +73,52 @@
     width: 24px;
 }
 
+// Flexbox fallback
 .project-grid, .skill-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
     margin: 1rem 0;
+
+    > * {
+        flex: 1 1 280px;
+    }
+}
+
+.skill-chart {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    max-width: 400px;
+}
+
+.project-card, .skill-card {
+    margin: 0.5rem;
+}
+
+@supports (display: grid) {
+    .project-grid, .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+
+        > * {
+            flex: none;
+        }
+    }
+
+    .skill-chart {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.35rem 0.75rem;
+        margin: 1rem 0;
+        align-items: center;
+        max-width: 400px;
+    }
+
+    .project-card, .skill-card {
+        margin: none;
+    }
 }
 
 .project-card, .skill-card {
@@ -89,15 +129,6 @@
     > p {
         margin-bottom: 0;
     }
-}
-
-.skill-chart {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.35rem 0.75rem;
-    margin: 1rem 0;
-    align-items: center;
-    max-width: 400px;
 }
 
 .skill-row {
