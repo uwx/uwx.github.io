@@ -3,7 +3,7 @@ import PostControls from "../../components/PostControls";
 import Layout from "../../layouts/Layout.astro";
 import { getPosts } from "../../lib/atproto/unauthed-client";
 
-const posts = await getPosts(true);
+const posts = import.meta.env.USE_BLOG === 'true' ? await getPosts(true) : [];
 ---
 
 <Layout title="Maxine's Blog - Admin Panel">

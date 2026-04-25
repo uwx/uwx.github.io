@@ -6,7 +6,7 @@ import Giscus from '@giscus/solid';
 import { renderMarkdownFancy } from '../../lib/render-markdown';
 
 export async function getStaticPaths() {
-    const posts = import.meta.env.USE_BLOG ? await getPosts(true) : [];
+    const posts = import.meta.env.USE_BLOG === 'true' ? await getPosts(true) : [];
 
     return posts.map(post => ({ params: { rkey: post.uri.rkey } }));
 }
