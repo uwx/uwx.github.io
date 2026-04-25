@@ -32,6 +32,68 @@ import '../styles/main.scss';
                 cursor: url(/cursor-pointer.png) 15 9, auto !important;
             }
         </style>
+        <script>
+            import { generatePaletteFromColor, type GenerationStyle } from "../lib/material3";
+
+            const hue = Math.random() * 360;
+            // convert hue to max-saturation hex color
+            function hueToHex(hue: number): string {
+                const h = hue / 60
+                const x = 1 - Math.abs((h % 2) - 1)
+                let r = 0,
+                    g = 0,
+                    b = 0
+                if (h < 1) {
+                    r = 1
+                    g = x
+                } else if (h < 2) {
+                    r = x
+                    g = 1
+                } else if (h < 3) {
+                    g = 1
+                    b = x
+                } else if (h < 4) {
+                    g = x
+                    b = 1
+                } else if (h < 5) {
+                    r = x
+                    b = 1
+                } else {
+                    r = 1
+                    b = x
+                }
+                const toHex = (v: number) =>
+                    Math.round(v * 255)
+                    .toString(16)
+                    .padStart(2, '0')
+                return `#${toHex(r)}${toHex(g)}${toHex(b)}`
+            }
+            const color = hueToHex(hue);
+
+            const style = [
+                'SPRITZ',
+                'TONAL_SPOT',
+                'VIBRANT',
+                'EXPRESSIVE',
+                'RAINBOW',
+                'FRUIT_SALAD',
+                'CONTENT',
+            ][Math.floor(Math.random() * 7)] as GenerationStyle;
+
+            const palette = generatePaletteFromColor(color, style);
+
+            document.documentElement.style.setProperty('--material-you-50', palette.system_accent1[0]);
+            document.documentElement.style.setProperty('--material-you-100', palette.system_accent1[1]);
+            document.documentElement.style.setProperty('--material-you-200', palette.system_accent1[2]);
+            document.documentElement.style.setProperty('--material-you-300', palette.system_accent1[3]);
+            document.documentElement.style.setProperty('--material-you-400', palette.system_accent1[4]);
+            document.documentElement.style.setProperty('--material-you-500', palette.system_accent1[5]);
+            document.documentElement.style.setProperty('--material-you-600', palette.system_accent1[6]);
+            document.documentElement.style.setProperty('--material-you-700', palette.system_accent1[7]);
+            document.documentElement.style.setProperty('--material-you-800', palette.system_accent1[8]);
+            document.documentElement.style.setProperty('--material-you-900', palette.system_accent1[9]);
+            document.documentElement.style.setProperty('--material-you-1000', palette.system_accent1[10]);
+        </script>
     </head>
     <body>
         <slot />

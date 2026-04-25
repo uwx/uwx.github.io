@@ -9,13 +9,15 @@ type ValidatedRSSFeedItem = z.infer<typeof rssSchema>;
 export const GET: APIRoute = async (context) => {
     const feedItems: ValidatedRSSFeedItem[] = [];
 
-    for (const { uri: { rkey }, value: post } of await getPosts()) {
-        feedItems.push({
-            title: post.title,
-            content: await renderMarkdown(post.content),
-            link: new URL(`/post/${rkey}`, context.site).toString(),
-            author: 'uwx',
-        });
+    if (import.meta.env.USE_BLOG === 'true') {
+        for (const { uri: { rkey }, value: post } of await getPosts()) {
+            feedItems.push({
+                title: post.title,
+                content: await renderMarkdown(post.content),
+                link: new URL(`/post/${rkey}`, context.site).toString(),
+                author: 'uwx',
+            });
+        }
     }
 
     return rss({

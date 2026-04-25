@@ -4,6 +4,8 @@
 @use "@picocss/pico/scss/themes/default/dark";
 @use "@picocss/pico/scss/settings" as *;
 
+@use "@picocss/pico/scss/colors" as *;
+
 // https://github.com/tivac/fixie/blob/master/hacks.js
 @mixin ie11 {
     @at-root {
@@ -161,4 +163,76 @@
 .project-year {
     display: block;
     margin-bottom: var(--pico-typography-spacing-vertical);
+}
+
+// Material You colors
+
+:root {
+    --material-you-50: #{$fuchsia-50};
+    --material-you-100: #{$fuchsia-100};
+    --material-you-200: #{$fuchsia-200};
+    --material-you-300: #{$fuchsia-300};
+    --material-you-400: #{$fuchsia-400};
+    --material-you-500: #{$fuchsia-500};
+    --material-you-600: #{$fuchsia-600};
+    --material-you-700: #{$fuchsia-700};
+    --material-you-800: #{$fuchsia-800};
+    --material-you-900: #{$fuchsia-900};
+    --material-you-900: #{$fuchsia-900};
+    --material-you-1000: #000;
+}
+
+@mixin material-you-light {
+    --pico-text-selection-color: rgba(var(--material-you-400), 0.25);
+    --pico-primary: var(--material-you-500);
+    --pico-primary-background: var(--material-you-200);
+    --pico-primary-underline: rgba(var(--material-you-500), 0.5);
+    --pico-primary-hover: var(--material-you-600);
+    --pico-primary-hover-background: var(--material-you-200);
+    --pico-primary-focus: rgba(var(--material-you-400), 0.5);
+    --pico-primary-inverse: $black;
+    --pico-switch-thumb-box-shadow: 0 0 0.5rem rgba($black, 0.25);
+}
+
+@mixin material-you-dark {
+    --pico-text-selection-color: rgba(var(--material-you-400), 0.1875);
+    --pico-primary: var(--material-you-300);
+    --pico-primary-background: var(--material-you-200);
+    --pico-primary-underline: rgba(var(--material-you-300), 0.5);
+    --pico-primary-hover: var(--material-you-250);
+    --pico-primary-hover-background: var(--material-you-150);
+    --pico-primary-focus: rgba(var(--material-you-300), 0.375);
+    --pico-primary-inverse: $black;
+    --pico-switch-thumb-box-shadow: 0 0 0.5rem rgba($black, 0.25);
+}
+
+:root {
+    @include material-you-dark;
+}
+
+// Light color scheme (Default)
+// Can be forced with data-theme="light"
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+    @include material-you-light;
+}
+
+// Dark color scheme (Auto)
+// Automatically enabled if user has Dark mode enabled
+@media only screen and (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        @include material-you-dark;
+    }
+}
+
+@media only screen and (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+        @include material-you-light;
+    }
+}
+
+// Dark color scheme (Forced)
+// Enabled if forced with data-theme="dark"
+[data-theme="dark"] {
+    @include material-you-dark;
 }
