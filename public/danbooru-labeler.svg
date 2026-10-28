@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b1838"/>
+      <stop offset="1" stop-color="#140c1d"/>
+    </linearGradient>
+    <radialGradient id="glowPink"><stop offset="0" stop-color="#ff5fa8" stop-opacity=".35"/><stop offset="1" stop-color="#ff5fa8" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowBlue"><stop offset="0" stop-color="#7fd8ff" stop-opacity=".35"/><stop offset="1" stop-color="#7fd8ff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowYellow"><stop offset="0" stop-color="#ffe45c" stop-opacity=".22"/><stop offset="1" stop-color="#ffe45c" stop-opacity="0"/></radialGradient>
+    <clipPath id="avatarClip"><circle cx="20.0" cy="20.0" r="20.0"/></clipPath>
+    <g id="avatar">
+      <image width="40" height="40" clip-path="url(#avatarClip)" href="data:image/webp;base64,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"/>
+    </g>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="320" cy="400" r="420" fill="url(#glowPink)"/>
+  <circle cx="1280" cy="400" r="420" fill="url(#glowBlue)"/>
+  <circle cx="800" cy="450" r="320" fill="url(#glowYellow)"/>
+
+  <g transform="translate(228 235)">
+    <rect width="282" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#35c64a">tsukino_usagi</text>
+  </g>
+  <g transform="translate(532 235)">
+    <rect width="498" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#c797ff">bishoujo_senshi_sailor_moon</text>
+  </g>
+  <g transform="translate(1052 235)">
+    <rect width="149" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">1girl</text>
+  </g>
+  <g transform="translate(1223 235)">
+    <rect width="149" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">solo</text>
+  </g>
+  <g transform="translate(147 329)">
+    <rect width="256" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">blonde_hair</text>
+  </g>
+  <g transform="translate(425 329)">
+    <rect width="209" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">twintails</text>
+  </g>
+  <g transform="translate(656 329)">
+    <rect width="257" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">double_bun</text>
+  </g>
+  <g transform="translate(935 329)">
+    <rect width="227" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">blue_eyes</text>
+  </g>
+  <g transform="translate(1184 329)">
+    <rect width="269" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">open_mouth</text>
+  </g>
+  <g transform="translate(198 423)">
+    <rect width="167" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">blush</text>
+  </g>
+  <g transform="translate(386 423)">
+    <rect width="407" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">hands_on_own_cheeks</text>
+  </g>
+  <g transform="translate(816 423)">
+    <rect width="257" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">sailor_collar</text>
+  </g>
+  <g transform="translate(1094 423)">
+    <rect width="308" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">school_uniform</text>
+  </g>
+  <g transform="translate(164 517)">
+    <rect width="343" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">looking_at_viewer</text>
+  </g>
+  <g transform="translate(530 517)">
+    <rect width="354" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">star-shaped_pupils</text>
+  </g>
+  <g transform="translate(906 517)">
+    <rect width="277" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#009be6">retro_artstyle</text>
+  </g>
+  <g transform="translate(1204 517)">
+    <rect width="231" height="68" rx="20" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <use href="#avatar" x="14" y="14"/>
+    <text x="66" y="44" font-size="30" font-weight="600" fill="#ead084">screencap</text>
+  </g>
+
+  <text x="800" y="758" text-anchor="middle" font-size="46" font-weight="700" fill="#ffffff" fill-opacity=".92">Danbooru tags  →  Bluesky labels</text>
+  <text x="800" y="812" text-anchor="middle" font-size="28" fill="#ffffff" fill-opacity=".6">an image classifier labels every image post</text>
+</svg>

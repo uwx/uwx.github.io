@@ -33,6 +33,11 @@ import '../styles/main.scss';
             }
         </style>
         <script>
+            import("../lib/background").then(({ renderBackground }) =>
+                renderBackground(document.getElementById("bg") as HTMLCanvasElement)
+            );
+        </script>
+        <script>
             import { generatePaletteFromColor, type GenerationStyle } from "../lib/material3";
 
             const hue = Math.random() * 360;
@@ -96,6 +101,7 @@ import '../styles/main.scss';
         </script>
     </head>
     <body>
+        <canvas id="bg" aria-hidden="true"></canvas>
         <slot />
     </body>
 </html>

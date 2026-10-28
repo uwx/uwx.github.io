@@ -6,6 +6,8 @@
 
 @use "@picocss/pico/scss/colors" as *;
 
+@use "liquid-glass";
+
 // https://github.com/tivac/fixie/blob/master/hacks.js
 @mixin ie11 {
     @at-root {
@@ -68,6 +70,21 @@
 // Enabled if forced with data-theme="dark"
 [data-theme="dark"] {
     @include dark.theme;
+}
+
+// Seeded three.js background; scrolls with the content
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+// top/height are set by src/lib/background.ts: only a window around the viewport is rendered
+#bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
 }
 
 // Rehype emoji
@@ -165,6 +182,71 @@
     margin-bottom: var(--pico-typography-spacing-vertical);
 }
 
+// Featured projects: big cards with an image slot (<figure class="featured-image">; drop an <img> inside it)
+.featured-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+
+    > * {
+        flex: 1 1 480px;
+    }
+}
+
+@supports (display: grid) {
+    .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+        gap: 1.5rem;
+
+        > * {
+            flex: none;
+            margin: 0;
+        }
+    }
+}
+
+.featured-card {
+    padding: 1.25rem;
+    margin: 0.5rem;
+
+    > h5 {
+        font-size: 1.35rem;
+    }
+}
+
+.featured-image {
+    margin: 0 0 1rem;
+    min-height: 10rem; // fallback where aspect-ratio is unsupported
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--pico-border-radius);
+
+    > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    // Empty slot placeholder
+    &:empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px dashed var(--pico-muted-border-color);
+        color: var(--pico-muted-color);
+
+        &::after {
+            content: "image";
+        }
+    }
+}
+
+.more-projects {
+    margin: 1.5rem 0;
+}
+
 // Material You colors
 
 :root {
@@ -235,4 +317,10 @@
 // Enabled if forced with data-theme="dark"
 [data-theme="dark"] {
     @include material-you-dark;
+}
+
+.main-container {
+    padding: 1rem;
+    border: 1px solid var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
 }

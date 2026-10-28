@@ -11,18 +11,20 @@ const { title, description, image } = Astro.props;
 ---
 <BaseLayout {title} {description} {image}>
     <div class="pico">
-        <header class="container">
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    {import.meta.env.USE_BLOG === 'true' && (
-                        <li><a href="/blog">Blog</a></li>
-                    )}
-                </ul>
-            </nav>
-        </header>
-        <main class="container">
-            <slot />
-        </main>
+        <div class="container glass-panel main-container">
+            <header class="container">
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        {import.meta.env.USE_BLOG === 'true' && (
+                            <li><a href="/blog">Blog</a></li>
+                        )}
+                    </ul>
+                </nav>
+            </header>
+            <main class="container">
+                <slot />
+            </main>
+        </div>
     </div>
 </BaseLayout>

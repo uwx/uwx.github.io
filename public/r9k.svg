@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b1838"/>
+      <stop offset="1" stop-color="#140c1d"/>
+    </linearGradient>
+    <linearGradient id="thumb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff5fa8" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#7fd8ff" stop-opacity=".75"/>
+    </linearGradient>
+    <radialGradient id="glowPink"><stop offset="0" stop-color="#ff5fa8" stop-opacity=".35"/><stop offset="1" stop-color="#ff5fa8" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowBlue"><stop offset="0" stop-color="#7fd8ff" stop-opacity=".35"/><stop offset="1" stop-color="#7fd8ff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowYellow"><stop offset="0" stop-color="#ffe45c" stop-opacity=".22"/><stop offset="1" stop-color="#ffe45c" stop-opacity="0"/></radialGradient>
+    <marker id="arrowWhite" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ffffff" fill-opacity=".8"/></marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7fd8ff"/></marker>
+    <marker id="arrowPink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff5fa8"/></marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="320" cy="420" r="420" fill="url(#glowPink)"/>
+  <circle cx="1280" cy="420" r="420" fill="url(#glowBlue)"/>
+  <circle cx="800" cy="420" r="300" fill="url(#glowYellow)"/>
+
+  <!-- Incoming posts -->
+  <g>
+    <rect x="60" y="150" width="440" height="540" rx="20" fill="#2a1a38" stroke="#ffffff" stroke-opacity=".18" stroke-width="2"/>
+    <path d="M60 206H500" stroke="#ffffff" stroke-opacity=".12" stroke-width="2"/>
+    <circle cx="96" cy="178" r="8" fill="#ffffff" fill-opacity=".25"/><circle cx="122" cy="178" r="8" fill="#ffffff" fill-opacity=".25"/><circle cx="148" cy="178" r="8" fill="#ffffff" fill-opacity=".25"/>
+    <text x="464" y="186" text-anchor="end" font-size="28" font-weight="700" fill="#ffffff">Firehose</text>
+    <rect x="90" y="232" width="380" height="96" rx="18" fill="#ffffff" fill-opacity=".06" stroke="#7fd8ff" stroke-opacity="0.55" stroke-width="2"/>
+    <circle cx="128" cy="280" r="22" fill="#7fd8ff"/>
+    <rect x="166" y="262" width="200" height="14" rx="7" fill="#ffffff" fill-opacity=".34"/>
+    <rect x="166" y="288" width="130" height="14" rx="7" fill="#ffffff" fill-opacity=".2"/>
+    <rect x="382" y="218" width="74" height="30" rx="15" fill="#241530" stroke="#7fd8ff" stroke-width="2"/>
+    <text x="419.0" y="239" text-anchor="middle" font-size="18" font-weight="700" fill="#7fd8ff">new</text>
+    <rect x="90" y="344" width="380" height="96" rx="18" fill="#ffffff" fill-opacity=".06" stroke="#ff5fa8" stroke-opacity="0.55" stroke-width="2"/>
+    <circle cx="128" cy="392" r="22" fill="#c78bff"/>
+    <rect x="166" y="374" width="200" height="14" rx="7" fill="#ffffff" fill-opacity=".34"/>
+    <rect x="166" y="400" width="130" height="14" rx="7" fill="#ffffff" fill-opacity=".2"/>
+    <rect x="382" y="330" width="74" height="30" rx="15" fill="#241530" stroke="#ff5fa8" stroke-width="2"/>
+    <text x="419.0" y="351" text-anchor="middle" font-size="18" font-weight="700" fill="#ff5fa8">seen</text>
+    <rect x="90" y="456" width="380" height="96" rx="18" fill="#ffffff" fill-opacity=".06" stroke="#7fd8ff" stroke-opacity="0.55" stroke-width="2"/>
+    <circle cx="128" cy="504" r="22" fill="#ffe45c"/>
+    <rect x="166" y="486" width="150" height="14" rx="7" fill="#ffffff" fill-opacity=".34"/>
+    <rect x="166" y="512" width="170" height="14" rx="7" fill="#ffffff" fill-opacity=".2"/>
+    <rect x="386" y="472" width="64" height="64" rx="12" fill="url(#thumb)"/>
+    <circle cx="430" cy="492" r="7" fill="#ffffff" fill-opacity=".7"/>
+    <path d="M390 528L410 502L424 518L434 508L446 528Z" fill="#ffffff" fill-opacity=".55"/>
+    <rect x="382" y="442" width="74" height="30" rx="15" fill="#241530" stroke="#7fd8ff" stroke-width="2"/>
+    <text x="419.0" y="463" text-anchor="middle" font-size="18" font-weight="700" fill="#7fd8ff">new</text>
+    <rect x="90" y="568" width="380" height="96" rx="18" fill="#ffffff" fill-opacity=".06" stroke="#ff5fa8" stroke-opacity="0.55" stroke-width="2"/>
+    <circle cx="128" cy="616" r="22" fill="#8bffc1"/>
+    <rect x="166" y="598" width="150" height="14" rx="7" fill="#ffffff" fill-opacity=".34"/>
+    <rect x="166" y="624" width="170" height="14" rx="7" fill="#ffffff" fill-opacity=".2"/>
+    <rect x="386" y="584" width="64" height="64" rx="12" fill="url(#thumb)"/>
+    <circle cx="430" cy="604" r="7" fill="#ffffff" fill-opacity=".7"/>
+    <path d="M390 640L410 614L424 630L434 620L446 640Z" fill="#ffffff" fill-opacity=".55"/>
+    <rect x="382" y="554" width="74" height="30" rx="15" fill="#241530" stroke="#ff5fa8" stroke-width="2"/>
+    <text x="419.0" y="575" text-anchor="middle" font-size="18" font-weight="700" fill="#ff5fa8">seen</text>
+  </g>
+
+  <!-- Feed -->
+  <g>
+    <rect x="1100" y="150" width="440" height="540" rx="20" fill="#2a1a38" stroke="#ffffff" stroke-opacity=".18" stroke-width="2"/>
+    <path d="M1100 206H1540" stroke="#ffffff" stroke-opacity=".12" stroke-width="2"/>
+    <circle cx="1136" cy="178" r="8" fill="#ffffff" fill-opacity=".25"/><circle cx="1162" cy="178" r="8" fill="#ffffff" fill-opacity=".25"/><circle cx="1188" cy="178" r="8" fill="#ffffff" fill-opacity=".25"/>
+    <text x="1504" y="186" text-anchor="end" font-size="28" font-weight="700" fill="#7fd8ff">r9k feed</text>
+    <rect x="1130" y="232" width="380" height="96" rx="18" fill="#ffffff" fill-opacity=".06" stroke="#7fd8ff" stroke-opacity="0.55" stroke-width="2"/>
+    <circle cx="1168" cy="280" r="22" fill="#7fd8ff"/>
+    <rect x="1206" y="262" width="200" height="14" rx="7" fill="#ffffff" fill-opacity=".34"/>
+    <rect x="1206" y="288" width="130" height="14" rx="7" fill="#ffffff" fill-opacity=".2"/>
+    <rect x="1130" y="344" width="380" height="96" rx="18" fill="#ffffff" fill-opacity=".06" stroke="#7fd8ff" stroke-opacity="0.55" stroke-width="2"/>
+    <circle cx="1168" cy="392" r="22" fill="#ffe45c"/>
+    <rect x="1206" y="374" width="150" height="14" rx="7" fill="#ffffff" fill-opacity=".34"/>
+    <rect x="1206" y="400" width="170" height="14" rx="7" fill="#ffffff" fill-opacity=".2"/>
+    <rect x="1426" y="360" width="64" height="64" rx="12" fill="url(#thumb)"/>
+    <circle cx="1470" cy="380" r="7" fill="#ffffff" fill-opacity=".7"/>
+    <path d="M1430 416L1450 390L1464 406L1474 396L1486 416Z" fill="#ffffff" fill-opacity=".55"/>
+    <rect x="1130" y="456" width="380" height="96" rx="18" fill="#ffffff" fill-opacity=".06" stroke="#7fd8ff" stroke-opacity="0.25" stroke-width="2"/>
+    <circle cx="1168" cy="504" r="22" fill="#ff9ad0"/>
+    <rect x="1206" y="486" width="220" height="14" rx="7" fill="#ffffff" fill-opacity=".34"/>
+    <rect x="1206" y="512" width="110" height="14" rx="7" fill="#ffffff" fill-opacity=".2"/>
+  </g>
+
+  <!-- Bloom filter -->
+  <g>
+    <rect x="640" y="260" width="320" height="320" rx="28" fill="#2a1a38" stroke="#ffe45c" stroke-width="3"/>
+    <text x="800" y="330" text-anchor="middle" font-size="40" font-weight="800" fill="#ffe45c">Bloom filter</text>
+    <text x="800" y="372" text-anchor="middle" font-size="24" fill="#ffffff" fill-opacity=".7">text + image hashes</text>
+    <rect x="660" y="440" width="28" height="28" rx="7" fill="#ffe45c" fill-opacity="0.85"/>
+    <rect x="696" y="440" width="28" height="28" rx="7" fill="#ffffff" fill-opacity="0.1"/>
+    <rect x="732" y="440" width="28" height="28" rx="7" fill="#ffe45c" fill-opacity="0.85"/>
+    <rect x="768" y="440" width="28" height="28" rx="7" fill="#ffe45c" fill-opacity="0.85"/>
+    <rect x="804" y="440" width="28" height="28" rx="7" fill="#ffffff" fill-opacity="0.1"/>
+    <rect x="840" y="440" width="28" height="28" rx="7" fill="#ffffff" fill-opacity="0.1"/>
+    <rect x="876" y="440" width="28" height="28" rx="7" fill="#ffe45c" fill-opacity="0.85"/>
+    <rect x="912" y="440" width="28" height="28" rx="7" fill="#ffffff" fill-opacity="0.1"/>
+    <rect x="660" y="484" width="28" height="28" rx="7" fill="#ffffff" fill-opacity="0.1"/>
+    <rect x="696" y="484" width="28" height="28" rx="7" fill="#ffe45c" fill-opacity="0.85"/>
+    <rect x="732" y="484" width="28" height="28" rx="7" fill="#ffffff" fill-opacity="0.1"/>
+    <rect x="768" y="484" width="28" height="28" rx="7" fill="#ffffff" fill-opacity="0.1"/>
+    <rect x="804" y="484" width="28" height="28" rx="7" fill="#ffe45c" fill-opacity="0.85"/>
+    <rect x="840" y="484" width="28" height="28" rx="7" fill="#ffe45c" fill-opacity="0.85"/>
+    <rect x="876" y="484" width="28" height="28" rx="7" fill="#ffffff" fill-opacity="0.1"/>
+    <rect x="912" y="484" width="28" height="28" rx="7" fill="#ffe45c" fill-opacity="0.85"/>
+    <text x="800" y="545" text-anchor="middle" font-size="22" fill="#ffffff" fill-opacity=".6">seen before?</text>
+  </g>
+
+  <!-- Flow -->
+  <g fill="none" stroke-width="5" stroke-linecap="round">
+    <path d="M512 400H628" stroke="#ffffff" stroke-opacity=".8" marker-end="url(#arrowWhite)"/>
+    <path d="M972 400H1088" stroke="#7fd8ff" marker-end="url(#arrowBlue)"/>
+    <path d="M800 592V648" stroke="#ff5fa8" marker-end="url(#arrowPink)"/>
+  </g>
+  <text x="800" y="684" text-anchor="middle" font-size="24" font-weight="700" fill="#ff5fa8">duplicates dropped</text>
+  <text x="1030" y="370" text-anchor="middle" font-size="22" font-weight="700" fill="#7fd8ff">unique</text>
+
+  <text x="800" y="768" text-anchor="middle" font-size="46" font-weight="700" fill="#ffffff" fill-opacity=".92">Seen it? Dropped.</text>
+  <text x="800" y="818" text-anchor="middle" font-size="28" fill="#ffffff" fill-opacity=".6">a Bloom filter over text and image hashes keeps only unique posts</text>
+</svg>
