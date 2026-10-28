@@ -19,7 +19,7 @@ type GlassStyle = {
 // Order matters: later entries are drawn on top of (and refract through) earlier ones.
 const STYLES: GlassStyle[] = [
     { selector: '.glass-panel', strength: 0, blur: 8, edge: 1 },
-    { selector: '.project-card, .skill-card', strength: 10, blur: 0, edge: 28 },
+    { selector: '.project-card, .skill-card', strength: 10, blur: 14, edge: 28 },
 ];
 
 /** Glass rects overlapping the canvas, relative to it, in CSS px (y down), as uniform data for the shader. */
@@ -75,16 +75,16 @@ vec3 fetch(vec2 p) {
     return texture2D(uTex, vec2(p.x / uSize.x, 1.0 - p.y / uSize.y)).rgb;
 }
 
-// Vogel disc: 24 taps are smooth enough for the soft blur used behind the main panel
+// Vogel disc: 32 taps keep the blur smooth enough at the radii used behind the panel and cards
 vec3 blurred(vec2 c, float r) {
     if (r < 0.5) return fetch(c);
     vec3 sum = fetch(c);
-    for (int i = 0; i < 24; i++) {
+    for (int i = 0; i < 32; i++) {
         float a = float(i) * 2.399963;
-        float d = r * sqrt((float(i) + 0.5) / 24.0);
+        float d = r * sqrt((float(i) + 0.5) / 32.0);
         sum += fetch(c + d * vec2(cos(a), sin(a)));
     }
-    return sum / 25.0;
+    return sum / 33.0;
 }
 
 void main() {

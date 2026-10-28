@@ -329,6 +329,8 @@ export function renderBackground(canvas: HTMLCanvasElement) {
         glass.rects.forEach((r, i) => uniforms.uRects.value[i].copy(r));
         glass.styles.forEach((s, i) => uniforms.uStyles.value[i].copy(s));
         renderer.render(quad, quadCamera);
+        // Fade in once something has been drawn (a frame later, so the transition starts from opacity 0)
+        requestAnimationFrame(() => canvas.classList.add('ready'));
     };
 
     let frame = 0;

@@ -85,6 +85,17 @@ body {
     left: 0;
     width: 100%;
     z-index: -1;
+    opacity: 0;
+    transition: opacity 1.2s ease-out;
+
+    // set by background.ts after the first draw
+    &.ready {
+        opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }
 
 // Rehype emoji
