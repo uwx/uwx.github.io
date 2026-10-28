@@ -165,12 +165,27 @@ body {
     font-weight: bold;
 }
 
-.skill-bars {
+// Icons from https://github.com/tandpfun/skill-icons (MIT), ordered by proficiency in the markup
+.skill-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+}
+
+.skill-icon {
     display: block;
-    height: 0.5rem;
-    border-radius: 999px;
-    background: var(--pico-primary);
-    width: 0%;
+    width: 3rem;
+    height: 3rem;
 }
 
 .project-card > h5 {
@@ -265,27 +280,27 @@ body {
 }
 
 @mixin material-you-light {
-    --pico-text-selection-color: rgba(var(--material-you-400), 0.25);
+    --pico-text-selection-color: color-mix(in srgb, var(--material-you-400) 25%, transparent);
     --pico-primary: var(--material-you-500);
     --pico-primary-background: var(--material-you-200);
-    --pico-primary-underline: rgba(var(--material-you-500), 0.5);
+    --pico-primary-underline: color-mix(in srgb, var(--material-you-500) 50%, transparent);
     --pico-primary-hover: var(--material-you-600);
     --pico-primary-hover-background: var(--material-you-200);
-    --pico-primary-focus: rgba(var(--material-you-400), 0.5);
-    --pico-primary-inverse: $black;
-    --pico-switch-thumb-box-shadow: 0 0 0.5rem rgba($black, 0.25);
+    --pico-primary-focus: color-mix(in srgb, var(--material-you-400) 50%, transparent);
+    --pico-primary-inverse: #{$black};
+    --pico-switch-thumb-box-shadow: 0 0 0.5rem #{rgba($black, 0.25)};
 }
 
 @mixin material-you-dark {
-    --pico-text-selection-color: rgba(var(--material-you-400), 0.1875);
+    --pico-text-selection-color: color-mix(in srgb, var(--material-you-400) 18.75%, transparent);
     --pico-primary: var(--material-you-300);
     --pico-primary-background: var(--material-you-200);
-    --pico-primary-underline: rgba(var(--material-you-300), 0.5);
-    --pico-primary-hover: var(--material-you-250);
-    --pico-primary-hover-background: var(--material-you-150);
-    --pico-primary-focus: rgba(var(--material-you-300), 0.375);
-    --pico-primary-inverse: $black;
-    --pico-switch-thumb-box-shadow: 0 0 0.5rem rgba($black, 0.25);
+    --pico-primary-underline: color-mix(in srgb, var(--material-you-300) 50%, transparent);
+    --pico-primary-hover: var(--material-you-200);
+    --pico-primary-hover-background: var(--material-you-100);
+    --pico-primary-focus: color-mix(in srgb, var(--material-you-300) 37.5%, transparent);
+    --pico-primary-inverse: #{$black};
+    --pico-switch-thumb-box-shadow: 0 0 0.5rem #{rgba($black, 0.25)};
 }
 
 :root {
